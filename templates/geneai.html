@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GeneAI Assistant &amp; Discovery IQ - Light Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#009688","primary-dark": "#00796b",
+                        "background-light": "#ffffff",
+                        "background-subtle": "#f8fafc","background-dark": "#101922","surface-dark": "#1a242f",
+                        "border-dark": "#283039",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-background-light font-body text-slate-900 h-screen flex flex-col overflow-hidden">
+<header class="flex shrink-0 items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 bg-white px-6 py-3 z-20">
+<div class="flex items-center gap-4 text-slate-900">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">genetics</span>
+</div>
+<h2 class="text-slate-900 text-xl font-display font-bold leading-tight tracking-[-0.015em]">Delta | DiffBlok</h2>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Data Analysis</a>
+<a class="text-primary text-sm font-medium leading-normal" href="#">GeneAI &amp; Discovery</a>
+<a class="text-slate-600 hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Project Settings</a>
+</nav>
+<div class="flex gap-3 items-center border-l border-gray-200 pl-6">
+<button class="relative flex items-center justify-center rounded-lg size-10 hover:bg-gray-100 text-slate-500 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border border-gray-200 shadow-sm" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpq7cF5ALBV-t2dT7jIFGR0oPVK4NFeb5dJw3ttUWX-eYcjQso_c0C-tFIYYdKrM_cjjU0i4sjfAMLWgVe6x2kHv4rj2EsZjpt12h0SSbQNQ1TQikO1N4fKWedPgiWvY43kWUGaItaKDfcoN1dpBK1fHSBlrlinM3CMGcmH_c-VtIhHNU6TbUzyH4QeZBBNMbeQTo0A4Rp24kKNlt_SyKJWKtcIADYo7Ci47WmnnBn-ZD7q_4ir010eqJQjm0FGRvW1D1VHWSYTdsd");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-[400px] flex flex-col border-r border-gray-200 bg-white z-10 shadow-xl shrink-0">
+<div class="px-5 py-4 border-b border-gray-200 bg-white">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-display font-bold text-lg flex items-center gap-2 text-slate-800">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+                    GeneAI Assistant
+                </h2>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">history</span></button>
+</div>
+<div class="flex gap-2 flex-wrap">
+<button class="flex h-7 items-center justify-center gap-x-1 rounded-full bg-primary/10 border border-primary/20 hover:border-primary/50 text-primary px-3 transition-colors">
+<span class="text-xs font-medium">Dataset Delta-452</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="flex h-7 items-center justify-center gap-x-1 rounded-full bg-gray-50 border border-gray-200 hover:border-gray-400 text-slate-600 px-3 transition-colors">
+<span class="text-xs font-medium">Exp. A vs Control</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-6 bg-slate-50">
+<div class="flex items-start gap-3">
+<div class="size-8 rounded-full bg-gradient-to-br from-teal-400 to-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white text-sm">smart_toy</span>
+</div>
+<div class="flex flex-col gap-1 items-start max-w-[85%]">
+<div class="text-slate-400 text-xs font-medium ml-1">GeneAI <span class="text-slate-500 font-normal ml-1">10:23 AM</span></div>
+<div class="rounded-2xl rounded-tl-none px-4 py-3 bg-white text-slate-700 shadow-sm border border-gray-200 text-sm leading-relaxed">
+                        Hello Dr. Smith. Analyzing dataset Delta-452. I've detected 1,240 differentially expressed genes. How can I assist?
+                    </div>
+</div>
+</div>
+<div class="flex items-start gap-3 flex-row-reverse">
+<div class="size-8 rounded-full bg-slate-200 bg-center bg-cover shrink-0 border border-white shadow-sm" data-alt="Dr Smith avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7SEytJaj61mruq_Ro0ODpyUAimg4X8DocZPadlqeDvyNKPMFd4cWFSAftHySelPHRafEgN0TF-YPup0yvHNwHmQN0D4asS1gExNuAmQblTdWOTFp2yv6rR3Nvb-36CPK-LB8oua0kF4tAXKWvXvitnpZ90T20dQMb_GIQtzlBJBf-W2a3hEKe4ac6jp_8DVmgXliHTk3F_Yr4NfdLrlwn1OeUFqgl-JpTGPY75Oq3J1W0U7O95PX_gwTsdJQMSiqYpaqGdtTwnfG0");'></div>
+<div class="flex flex-col gap-1 items-end max-w-[85%]">
+<div class="text-slate-400 text-xs font-medium mr-1">Dr. Smith <span class="text-slate-500 font-normal ml-1">10:25 AM</span></div>
+<div class="rounded-2xl rounded-tr-none px-4 py-3 bg-primary text-white shadow-md shadow-primary/20 text-sm leading-relaxed">
+                        What are the top 5 genes involved in inflammation here?
+                    </div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="size-8 rounded-full bg-gradient-to-br from-teal-400 to-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white text-sm">smart_toy</span>
+</div>
+<div class="flex flex-col gap-1 items-start max-w-[90%]">
+<div class="text-slate-400 text-xs font-medium ml-1">GeneAI <span class="text-slate-500 font-normal ml-1">10:26 AM</span></div>
+<div class="rounded-2xl rounded-tl-none p-4 bg-white text-slate-700 shadow-sm border border-gray-200 text-sm leading-relaxed w-full">
+<p class="mb-3">Based on log2 fold change (&gt;2.0) and p-adj &lt; 0.05, the top inflammation markers are:</p>
+<div class="bg-gray-50 rounded-lg p-3 mb-3 border border-gray-200 font-mono text-xs text-slate-800">
+                            1. IL6 (L2FC: 4.2)<br/>
+                            2. TNF (L2FC: 3.8)<br/>
+                            3. CXCL8 (L2FC: 3.5)<br/>
+                            4. NFKB1 (L2FC: 3.1)<br/>
+                            5. CCL2 (L2FC: 2.9)
+                        </div>
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary py-2 text-xs font-bold transition-colors">
+<span class="material-symbols-outlined text-base">add_box</span>
+                            Create Knowledge Card
+                        </button>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3 opacity-60">
+<div class="size-8 rounded-full bg-gradient-to-br from-teal-400 to-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-sm animate-spin">sync</span>
+</div>
+<div class="flex flex-col gap-1 items-start max-w-[85%]">
+<div class="rounded-2xl rounded-tl-none px-4 py-2 bg-white text-slate-700 border border-gray-200 text-sm italic shadow-sm">
+                        Running pathway enrichment analysis on AWS Lambda...
+                    </div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-white border-t border-gray-200">
+<div class="relative flex items-end gap-2 rounded-xl bg-gray-50 border border-gray-200 p-2 focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent transition-all shadow-inner">
+<button class="p-2 text-slate-400 hover:text-primary rounded-lg hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<textarea class="w-full bg-transparent border-none text-slate-900 placeholder-slate-400 text-sm focus:ring-0 resize-none py-2.5 max-h-32" placeholder="Ask GeneAI..." rows="1" style="min-height: 44px;"></textarea>
+<button class="p-2 bg-primary hover:bg-[#00796b] text-white rounded-lg shadow-lg shadow-primary/30 transition-colors">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="text-center mt-2">
+<p class="text-[10px] text-slate-400">AI can make mistakes. Verify critical genomic findings.</p>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col relative bg-background-subtle overflow-hidden">
+<div class="shrink-0 bg-white border-b border-gray-200 p-4 shadow-sm z-10">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<h3 class="font-display font-bold text-slate-900 text-sm uppercase tracking-wider">Active Hypothesis</h3>
+</div>
+<div class="flex gap-2">
+<button class="text-xs font-medium text-slate-500 hover:text-primary flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">save</span> Save
+                    </button>
+<button class="text-xs font-medium text-slate-500 hover:text-primary flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">share</span> Share
+                    </button>
+</div>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+<div class="bg-primary/5 border border-primary/20 rounded-lg p-3 min-w-[300px] flex items-start gap-3 group relative hover:bg-primary/10 transition-colors cursor-pointer">
+<div class="mt-1 size-2 rounded-full bg-primary shrink-0"></div>
+<div>
+<p class="text-sm font-medium text-slate-900 mb-1">Treatment X induces immune response</p>
+<p class="text-xs text-slate-500">2 Evidence Cards Linked</p>
+</div>
+<button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<button class="border border-dashed border-gray-300 rounded-lg p-3 min-w-[200px] flex items-center justify-center gap-2 text-slate-400 hover:text-primary hover:border-primary hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined">add</span>
+<span class="text-sm font-medium">New Hypothesis</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex items-center justify-between mb-6">
+<h1 class="text-2xl font-display font-bold text-slate-900">Discovery Canvas</h1>
+<div class="flex bg-white rounded-lg p-1 border border-gray-200 shadow-sm">
+<button class="p-1.5 rounded bg-gray-100 text-slate-900 shadow-sm">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+</button>
+<button class="p-1.5 rounded text-slate-500 hover:text-slate-900 transition-colors">
+<span class="material-symbols-outlined text-sm">view_list</span>
+</button>
+</div>
+</div>
+<div class="columns-1 md:columns-2 xl:columns-3 gap-6 space-y-6">
+<div class="break-inside-avoid bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300 group">
+<div class="p-5">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<div class="p-1.5 bg-red-500/10 rounded-md text-red-500">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+</div>
+<h4 class="font-display font-bold text-slate-900">Inflammation Cluster</h4>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="space-y-3 mb-4">
+<div class="flex items-center justify-between group/gene hover:bg-gray-50 p-1 -mx-1 rounded px-2 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="w-12 text-sm font-bold text-slate-700">IL6</span>
+<div class="h-8 w-24 flex items-end gap-0.5" data-alt="Sparkline bar chart">
+<div class="w-1/5 bg-slate-300 h-[20%] rounded-sm"></div>
+<div class="w-1/5 bg-slate-300 h-[30%] rounded-sm"></div>
+<div class="w-1/5 bg-slate-300 h-[25%] rounded-sm"></div>
+<div class="w-1/5 bg-primary h-[90%] rounded-sm shadow-[0_0_8px_rgba(0,150,136,0.6)]"></div>
+<div class="w-1/5 bg-primary h-[85%] rounded-sm"></div>
+</div>
+</div>
+<span class="text-xs font-mono text-emerald-600 font-medium">+4.2 FC</span>
+</div>
+<div class="flex items-center justify-between group/gene hover:bg-gray-50 p-1 -mx-1 rounded px-2 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="w-12 text-sm font-bold text-slate-700">TNF</span>
+<div class="h-8 w-24 flex items-end gap-0.5" data-alt="Sparkline bar chart">
+<div class="w-1/5 bg-slate-300 h-[15%] rounded-sm"></div>
+<div class="w-1/5 bg-slate-300 h-[20%] rounded-sm"></div>
+<div class="w-1/5 bg-slate-300 h-[20%] rounded-sm"></div>
+<div class="w-1/5 bg-primary h-[80%] rounded-sm shadow-[0_0_8px_rgba(0,150,136,0.6)]"></div>
+<div class="w-1/5 bg-primary h-[75%] rounded-sm"></div>
+</div>
+</div>
+<span class="text-xs font-mono text-emerald-600 font-medium">+3.8 FC</span>
+</div>
+<div class="flex items-center justify-between group/gene hover:bg-gray-50 p-1 -mx-1 rounded px-2 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="w-12 text-sm font-bold text-slate-700">CXCL8</span>
+<div class="h-8 w-24 flex items-end gap-0.5" data-alt="Sparkline bar chart">
+<div class="w-1/5 bg-slate-300 h-[10%] rounded-sm"></div>
+<div class="w-1/5 bg-slate-300 h-[15%] rounded-sm"></div>
+<div class="w-1/5 bg-slate-300 h-[18%] rounded-sm"></div>
+<div class="w-1/5 bg-primary h-[75%] rounded-sm shadow-[0_0_8px_rgba(0,150,136,0.6)]"></div>
+<div class="w-1/5 bg-primary h-[70%] rounded-sm"></div>
+</div>
+</div>
+<span class="text-xs font-mono text-emerald-600 font-medium">+3.5 FC</span>
+</div>
+</div>
+<div class="flex gap-2 pt-3 border-t border-gray-100 mt-2">
+<button class="flex-1 text-xs font-medium text-slate-500 hover:text-primary py-1.5 rounded hover:bg-primary/5 transition-colors">See Raw Data</button>
+<button class="flex-1 text-xs font-medium text-primary py-1.5 rounded hover:bg-primary/10 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">push_pin</span> Pin to Tracker
+                                </button>
+</div>
+</div>
+</div>
+<div class="break-inside-avoid bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300 group">
+<div class="p-5">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<div class="p-1.5 bg-purple-500/10 rounded-md text-purple-500">
+<span class="material-symbols-outlined text-lg">account_tree</span>
+</div>
+<h4 class="font-display font-bold text-slate-900">Pathway Enrichment</h4>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<p class="text-xs text-slate-500 mb-4">Top affected KEGG Pathways sorted by p-value.</p>
+<div class="relative w-full h-40 bg-gray-50 rounded-lg overflow-hidden mb-4 border border-gray-200">
+<div class="absolute inset-0 flex items-center justify-center" data-alt="Scatter plot showing pathway enrichment">
+<div class="absolute top-8 right-10 size-3 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,150,136,0.8)]"></div>
+<div class="absolute top-12 right-16 size-2 rounded-full bg-primary/80"></div>
+<div class="absolute top-20 right-8 size-2 rounded-full bg-primary/60"></div>
+<div class="absolute bottom-10 left-10 size-2 rounded-full bg-slate-400"></div>
+<div class="absolute bottom-14 left-24 size-1.5 rounded-full bg-slate-400"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-transparent to-black/5 pointer-events-none"></div>
+</div>
+<div class="absolute top-4 right-12 bg-white border border-gray-200 text-slate-700 text-[10px] px-2 py-1 rounded shadow-lg">
+                                    Cytokine-cytokine receptor
+                                </div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-700 truncate w-[70%]">Cytokine-cytokine receptor</span>
+<span class="text-xs font-mono text-primary font-bold">p=0.004</span>
+</div>
+<div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 85%"></div>
+</div>
+<div class="flex justify-between items-center text-sm mt-3">
+<span class="text-slate-700 truncate w-[70%]">NF-kappa B signaling pathway</span>
+<span class="text-xs font-mono text-primary font-bold">p=0.012</span>
+</div>
+<div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/70 h-full rounded-full" style="width: 65%"></div>
+</div>
+</div>
+<div class="flex gap-2 pt-3 border-t border-gray-100 mt-4">
+<button class="flex-1 text-xs font-medium text-slate-500 hover:text-primary py-1.5 rounded hover:bg-primary/5 transition-colors">Details</button>
+<button class="flex-1 text-xs font-medium text-primary py-1.5 rounded hover:bg-primary/10 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">push_pin</span> Pin to Tracker
+                                </button>
+</div>
+</div>
+</div>
+<div class="break-inside-avoid bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300 group">
+<div class="p-5">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<div class="p-1.5 bg-emerald-500/10 rounded-md text-emerald-500">
+<span class="material-symbols-outlined text-lg">scatter_plot</span>
+</div>
+<h4 class="font-display font-bold text-slate-900">Volcano Plot</h4>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">fullscreen</span></button>
+</div>
+<div class="aspect-square w-full bg-gray-50 rounded-lg relative overflow-hidden flex items-center justify-center mb-4 border border-gray-200">
+<div class="w-full h-full relative" data-alt="Volcano plot of gene expression">
+<div class="absolute left-4 bottom-4 w-[calc(100%-32px)] h-px bg-slate-300"></div>
+<div class="absolute left-4 bottom-4 h-[calc(100%-32px)] w-px bg-slate-300"></div>
+<div class="absolute top-[20%] right-[25%] size-1.5 bg-red-500 rounded-full opacity-80"></div>
+<div class="absolute top-[25%] right-[20%] size-2 bg-red-500 rounded-full opacity-90"></div>
+<div class="absolute top-[15%] right-[15%] size-1.5 bg-red-500 rounded-full opacity-70"></div>
+<div class="absolute top-[30%] right-[30%] size-1 bg-red-500 rounded-full opacity-60"></div>
+<div class="absolute top-[30%] left-[25%] size-1.5 bg-blue-500 rounded-full opacity-80"></div>
+<div class="absolute top-[35%] left-[20%] size-2 bg-blue-500 rounded-full opacity-90"></div>
+<div class="absolute bottom-[10%] left-[50%] -translate-x-1/2 w-32 h-20 flex flex-wrap justify-center content-end gap-1 opacity-30">
+<div class="size-0.5 bg-slate-400 rounded-full"></div>
+<div class="size-0.5 bg-slate-400 rounded-full"></div>
+<div class="size-0.5 bg-slate-400 rounded-full"></div>
+<div class="size-0.5 bg-slate-400 rounded-full"></div>
+<div class="size-0.5 bg-slate-400 rounded-full"></div>
+<div class="size-0.5 bg-slate-400 rounded-full"></div>
+<div class="size-0.5 bg-slate-400 rounded-full"></div>
+</div>
+</div>
+</div>
+<p class="text-xs text-slate-500">Showing 12,403 genes. <span class="text-red-500 font-medium">128 Upregulated</span>, <span class="text-blue-500 font-medium">84 Downregulated</span>.</p>
+</div>
+</div>
+<div class="break-inside-avoid bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300 group">
+<div class="p-5">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<div class="p-1.5 bg-orange-500/10 rounded-md text-orange-500">
+<span class="material-symbols-outlined text-lg">category</span>
+</div>
+<h4 class="font-display font-bold text-slate-900">Gene Ontology (BP)</h4>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs text-slate-700">Immune Response</span>
+<span class="px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs text-slate-700">Cell Adhesion</span>
+<span class="px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs text-slate-700">Apoptotic Process</span>
+</div>
+<div class="bg-primary/5 rounded-lg p-3 border border-primary/20">
+<p class="text-xs text-primary font-bold mb-1">AI Insight</p>
+<p class="text-xs text-slate-700 leading-relaxed">
+                                    Biological Process (BP) analysis suggests a strong skew towards innate immune activation rather than adaptive response.
+                                </p>
+</div>
+<div class="flex gap-2 pt-3 border-t border-gray-100 mt-4">
+<button class="flex-1 text-xs font-medium text-primary py-1.5 rounded hover:bg-primary/10 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">push_pin</span> Pin to Tracker
+                                </button>
+</div>
+</div>
+</div>
+</div> 
+</div>
+</div>
+<button class="absolute bottom-8 right-8 size-14 bg-primary hover:bg-[#00796b] rounded-full shadow-xl shadow-primary/30 flex items-center justify-center text-white transition-transform hover:scale-105 z-20">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</main>
+</div>
+
+</body></html>

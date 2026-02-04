@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delta Home Dashboard - Light Theme</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d9488", // Teal 600
+                        "background-light": "#ffffff",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c232d",
+                        "surface-light": "#ffffff",
+                        "border-dark": "#2d3642",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light text-[#111418] font-display overflow-x-hidden antialiased">
+<div class="flex h-screen w-full overflow-hidden">
+<div class="w-64 flex-shrink-0 border-r border-[#e5e7eb] bg-surface-light flex flex-col justify-between p-4 hidden md:flex">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col px-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<h1 class="text-xl font-bold tracking-tight">DiffBlok</h1>
+</div>
+<p class="text-[#637588] text-xs font-normal">Genomics Engine v2.4</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] hover:bg-gray-50 transition-colors" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-sm font-medium">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] hover:bg-gray-50 transition-colors" href="#">
+<span class="material-symbols-outlined">database</span>
+<span class="text-sm font-medium">Data Storage</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] hover:bg-gray-50 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] hover:bg-gray-50 transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-sm font-medium">Documentation</span>
+</a>
+<div class="mt-4 pt-4 border-t border-[#e5e7eb] flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-teal-800 flex items-center justify-center text-white text-xs font-bold">DA</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium leading-none">Dr. Aris</p>
+<p class="text-xs text-[#637588] mt-1">Free Plan</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col h-full overflow-y-auto bg-background-light relative">
+<div class="md:hidden flex items-center justify-between p-4 border-b border-[#e5e7eb] bg-white">
+<span class="material-symbols-outlined text-primary">hub</span>
+<span class="material-symbols-outlined text-[#111418]">menu</span>
+</div>
+<div class="flex flex-col w-full max-w-[1200px] mx-auto p-6 md:p-10 gap-8">
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl md:text-4xl font-bold tracking-tight text-[#111418]">Welcome back, Dr. Aris</h1>
+<div class="flex items-center gap-2 text-sm md:text-base text-[#637588]">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                System Status: Online
+                            </span>
+<span class="opacity-50">|</span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs" style="font-size: 16px;">cloud_sync</span>
+                                AWS Lambda Engine: Active
+                            </span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center h-10 px-4 rounded-lg border border-[#d1d5db] text-[#111418] bg-white hover:bg-gray-50 text-sm font-medium transition-colors">
+                            View Logs
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col p-5 rounded-xl border border-[#e5e7eb] bg-white shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[#637588] text-sm font-medium uppercase tracking-wider">Samples Processed</p>
+<span class="material-symbols-outlined text-primary">biotech</span>
+</div>
+<p class="text-3xl font-bold text-[#111418]">1,248</p>
+<p class="text-xs text-emerald-600 mt-1 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" style="font-size: 14px;">trending_up</span> +12% this week
+                        </p>
+</div>
+<div class="flex flex-col p-5 rounded-xl border border-[#e5e7eb] bg-white shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[#637588] text-sm font-medium uppercase tracking-wider">Active Jobs</p>
+<span class="material-symbols-outlined text-primary">memory</span>
+</div>
+<p class="text-3xl font-bold text-[#111418]">3</p>
+<p class="text-xs text-[#637588] mt-1">2 Queued, 1 Running</p>
+</div>
+<div class="flex flex-col p-5 rounded-xl border border-[#e5e7eb] bg-white shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[#637588] text-sm font-medium uppercase tracking-wider">Storage Used</p>
+<span class="material-symbols-outlined text-primary">hard_drive</span>
+</div>
+<p class="text-3xl font-bold text-[#111418]">450 <span class="text-lg font-medium text-[#637588]">GB</span></p>
+<div class="w-full bg-gray-100 rounded-full h-1.5 mt-3">
+<div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row items-stretch rounded-xl bg-white border border-[#e5e7eb] shadow-sm overflow-hidden group">
+<div class="flex-1 p-6 md:p-8 flex flex-col justify-center gap-4">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-teal-50 text-teal-700 w-fit">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="text-xs font-bold uppercase tracking-wide">Lambda Engine Ready</span>
+</div>
+<div>
+<h2 class="text-2xl md:text-3xl font-bold text-[#111418] mb-2">Delta: Bulk RNA-seq</h2>
+<p class="text-[#637588] text-base md:text-lg max-w-xl">
+                                Raw FASTQ to Differential Expression in minutes. Automate your transition from raw genomic data to biological insight using our serverless pipeline.
+                            </p>
+</div>
+<div class="pt-2">
+<button class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-teal-700 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-lg shadow-teal-500/20 active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                                Start New Project
+                            </button>
+</div>
+</div>
+<div class="lg:w-2/5 min-h-[240px] bg-cover bg-center relative" data-alt="Abstract colorful DNA structure or network nodes glowing in dark space" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqpOuTLrLoL63czIWwTXS6zcxv3bZYZQ18F7AQm0WzvfPedUS9pY7QqgI68iBh5WrQ0l6LHAtp62-aRjGmpf-grsO21P_qrkDP5xZtmtWjFxLAU7JkCnZge2NrEhsdavu7qw5iZTt1NTkIEJko3Us2NnulM-jz5RlRRaxFVZ1RvWNbabIuPr7hiSGrRWLnSV7YZm8I_HQ1nO1xduwV-8lnkTBRPdB2mC0fkRxc2ezMcRY6bRbOZbWQevDHAkl1nfQdYki58o-PD6xO');">
+<div class="absolute inset-0 bg-gradient-to-l from-white/10 to-white"></div>
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<h3 class="text-xl font-bold text-[#111418]">Ongoing Projects</h3>
+<div class="relative w-full md:w-96 group/search">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[#637588]">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-[#e5e7eb] rounded-lg leading-5 bg-white text-[#111418] placeholder-[#9ca3af] focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition-colors" placeholder="Search by name, ID, or organism..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 border-b border-[#e5e7eb]">
+<th class="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#637588]">Project Name</th>
+<th class="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#637588]">Organism</th>
+<th class="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#637588]">Samples</th>
+<th class="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#637588]">Last Updated</th>
+<th class="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#637588]">Status</th>
+<th class="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#637588] text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e5e7eb] font-body">
+<tr class="group hover:bg-gray-50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="font-medium text-[#111418]">Mouse_Liver_Study_001</span>
+<span class="text-xs text-[#637588]">ID: #DLT-8921</span>
+</div>
+</td>
+<td class="py-4 px-6 text-sm text-[#111418]">Mus musculus</td>
+<td class="py-4 px-6 text-sm text-[#111418]">12</td>
+<td class="py-4 px-6 text-sm text-[#111418]">2 hours ago</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            QC Passed
+                                        </span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-teal-700 text-sm font-medium">View Results</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="font-medium text-[#111418]">Human_CellLine_Treatment</span>
+<span class="text-xs text-[#637588]">ID: #DLT-8924</span>
+</div>
+</td>
+<td class="py-4 px-6 text-sm text-[#111418]">Homo sapiens</td>
+<td class="py-4 px-6 text-sm text-[#111418]">6</td>
+<td class="py-4 px-6 text-sm text-[#111418]">15 mins ago</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-teal-50 text-teal-700 border border-teal-200">
+<span class="material-symbols-outlined text-xs animate-spin" style="font-size: 12px;">progress_activity</span>
+                                            Processing (45%)
+                                        </span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-[#637588] hover:text-[#111418] text-sm font-medium">Cancel</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="font-medium text-[#111418]">Yeast_HeatShock_Rep1</span>
+<span class="text-xs text-[#637588]">ID: #DLT-8800</span>
+</div>
+</td>
+<td class="py-4 px-6 text-sm text-[#111418]">Saccharomyces cerevisiae</td>
+<td class="py-4 px-6 text-sm text-[#111418]">3</td>
+<td class="py-4 px-6 text-sm text-[#111418]">Yesterday</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-purple-50 text-purple-800 border border-purple-200">
+<span class="material-symbols-outlined text-xs" style="font-size: 12px;">check_circle</span>
+                                            DGEA Complete
+                                        </span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-teal-700 text-sm font-medium">Report Ready</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="font-medium text-[#111418]">Zebrafish_Dev_Stage4</span>
+<span class="text-xs text-[#637588]">ID: #DLT-8755</span>
+</div>
+</td>
+<td class="py-4 px-6 text-sm text-[#111418]">Danio rerio</td>
+<td class="py-4 px-6 text-sm text-[#111418]">24</td>
+<td class="py-4 px-6 text-sm text-[#111418]">3 days ago</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200">
+<span class="material-symbols-outlined text-xs" style="font-size: 12px;">cloud_upload</span>
+                                            Upload Pending
+                                        </span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-teal-700 text-sm font-medium">Resume</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

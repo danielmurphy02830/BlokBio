@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Delta | Contrast Comparison &amp; Venn Analysis</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#009688", "primary-hover": "#00796b", "background-light": "#ffffff",
+            "background-offset": "#f8fafc", "surface-light": "#ffffff",
+            "border-light": "#e2e8f0",
+            "text-main": "#0f172a", "text-secondary": "#475569", "accent-secondary": "#10b981", "accent-danger": "#ef4444",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+          boxShadow: {
+            'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+            'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light text-text-main overflow-hidden h-screen flex flex-col font-display">
+  <header
+    class="flex-none flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light bg-surface-light px-6 py-3 shadow-subtle z-20">
+    <div class="flex items-center gap-8">
+      <div class="flex items-center gap-4 text-text-main">
+        <div class="size-6 text-primary">
+          <svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd"
+              d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z"
+              fill="currentColor" fill-rule="evenodd"></path>
+            <path clip-rule="evenodd"
+              d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z"
+              fill="currentColor" fill-rule="evenodd"></path>
+          </svg>
+        </div>
+        <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-slate-800">Delta | DiffBlok</h2>
+      </div>
+      <nav class="hidden md:flex items-center gap-9">
+        <a onclick="Shiny.setInputValue('nav_page', 'workspaces', {priority: 'event'})"
+          class="text-text-secondary hover:text-primary transition-colors text-sm font-medium leading-normal cursor-pointer">Projects</a>
+        <a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary pb-0.5" href="#">Analysis</a>
+        <a class="text-text-secondary hover:text-primary transition-colors text-sm font-medium leading-normal"
+          href="#">Data</a>
+        <a class="text-text-secondary hover:text-primary transition-colors text-sm font-medium leading-normal"
+          href="#">Settings</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="relative hidden sm:block">
+        <span
+          class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary text-xl">search</span>
+        <input
+          class="h-9 w-64 rounded-lg border border-slate-200 bg-slate-50 pl-10 pr-4 text-sm text-text-main focus:ring-1 focus:ring-primary focus:border-primary placeholder-text-secondary outline-none transition-all"
+          placeholder="Search gene or experiment..." />
+      </div>
+      <button
+        class="flex items-center justify-center rounded-full size-9 bg-white border border-slate-200 hover:bg-slate-50 hover:text-primary transition-colors text-text-secondary shadow-sm">
+        <span class="material-symbols-outlined text-[20px]">notifications</span>
+      </button>
+      <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-primary/20 shadow-sm"
+        data-alt="User profile avatar"
+        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBVgDHYjZSP4oQfZzYD8Kb85I8CWhvWkMf1xZGFMmMr5tXezgS3UbUsXpSJWu40O03hqCD-Uy38GXtHVSSUeeP25riXTKpuSI-bwEy_tocCPbS_qu2z-Kyuks4LJj9XlpGr5gOEz7BrcWgCfyMK8zsgalp3HAXxfrSJejJ54pxic8cJ7_cIB8jnkoHHJecOuBmwWsfxUo4Xv7SGgiNqa3xwCVN7Xt6L2g8Kdv0ddDY9YC0I57jf4o5lcsEEjiwQMLoocjBl2S7fhv7W");'>
+      </div>
+    </div>
+  </header>
+  <div class="flex flex-1 overflow-hidden bg-white">
+    <aside
+      class="w-80 flex flex-col border-r border-border-light bg-background-offset overflow-y-auto z-10 shadow-[4px_0_24px_-12px_rgba(0,0,0,0.05)]">
+      <div class="p-5 border-b border-border-light bg-white">
+        <div class="flex flex-wrap gap-2 mb-4 text-xs font-medium">
+          <a class="text-text-secondary hover:text-primary transition-colors" href="#">Proj-Alpha</a>
+          <span class="text-slate-300">/</span>
+          <a class="text-text-secondary hover:text-primary transition-colors" href="#">Exp-12</a>
+        </div>
+        <h1 class="text-xl font-bold tracking-tight mb-1 text-slate-800">Contrast Selection</h1>
+        <p class="text-xs text-text-secondary">Select up to 4 conditions to compare.</p>
+      </div>
+      <div class="flex-1 p-4 space-y-6">
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 px-2">Drug Treatments (24h)</h3>
+          <div class="space-y-1">
+            <label
+              class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:shadow-sm cursor-pointer group transition-all border border-transparent hover:border-slate-100">
+              <input checked="" class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white"
+                type="checkbox" />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-slate-700 group-hover:text-primary transition-colors">Wild Type
+                  vs Mutant</span>
+                <span class="text-[10px] text-slate-500">n=345 DEGs</span>
+              </div>
+            </label>
+            <label
+              class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:shadow-sm cursor-pointer group transition-all border border-transparent hover:border-slate-100">
+              <input checked="" class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white"
+                type="checkbox" />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-slate-700 group-hover:text-primary transition-colors">Drug A vs
+                  Control</span>
+                <span class="text-[10px] text-slate-500">n=1,203 DEGs</span>
+              </div>
+            </label>
+            <label
+              class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:shadow-sm cursor-pointer group transition-all border border-transparent hover:border-slate-100">
+              <input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white" type="checkbox" />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-slate-700 group-hover:text-primary transition-colors">Drug B vs
+                  Control</span>
+                <span class="text-[10px] text-slate-500">n=890 DEGs</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 px-2">Time Course</h3>
+          <div class="space-y-1">
+            <label
+              class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:shadow-sm cursor-pointer group transition-all border border-transparent hover:border-slate-100">
+              <input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white" type="checkbox" />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-slate-700 group-hover:text-primary transition-colors">Time 0h vs
+                  6h</span>
+                <span class="text-[10px] text-slate-500">n=120 DEGs</span>
+              </div>
+            </label>
+            <label
+              class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:shadow-sm cursor-pointer group transition-all border border-transparent hover:border-slate-100">
+              <input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white" type="checkbox" />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-slate-700 group-hover:text-primary transition-colors">Time 6h vs
+                  12h</span>
+                <span class="text-[10px] text-slate-500">n=450 DEGs</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="pt-6 border-t border-border-light">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 px-2">Global Thresholds</h3>
+          <div class="space-y-6 px-2">
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-semibold text-slate-600">Adj. P-Value Cutoff</label>
+                <span class="text-xs text-primary font-bold bg-primary/10 px-2 py-0.5 rounded">0.05</span>
+              </div>
+              <input
+                class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer [&amp;::-webkit-slider-thumb]:appearance-none [&amp;::-webkit-slider-thumb]:w-3.5 [&amp;::-webkit-slider-thumb]:h-3.5 [&amp;::-webkit-slider-thumb]:bg-primary [&amp;::-webkit-slider-thumb]:rounded-full [&amp;::-webkit-slider-thumb]:shadow-sm"
+                max="0.1" min="0.01" step="0.01" type="range" value="0.05" />
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-semibold text-slate-600">Log2 Fold Change</label>
+                <span class="text-xs text-primary font-bold bg-primary/10 px-2 py-0.5 rounded">≥ 1.5</span>
+              </div>
+              <input
+                class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer [&amp;::-webkit-slider-thumb]:appearance-none [&amp;::-webkit-slider-thumb]:w-3.5 [&amp;::-webkit-slider-thumb]:h-3.5 [&amp;::-webkit-slider-thumb]:bg-primary [&amp;::-webkit-slider-thumb]:rounded-full [&amp;::-webkit-slider-thumb]:shadow-sm"
+                max="5" min="0" step="0.5" type="range" value="1.5" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 border-t border-border-light bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)]">
+        <button
+          class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white text-sm font-bold py-3 px-4 rounded-lg transition-all shadow-lg shadow-primary/20 transform active:scale-[0.98]">
+          <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+          Run AI Interpretation
+        </button>
+      </div>
+    </aside>
+    <main class="flex-1 flex flex-col min-w-0 bg-white relative overflow-hidden">
+      <div
+        class="flex-none px-8 py-6 flex items-end justify-between border-b border-slate-100 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight text-slate-800">Venn Analysis</h2>
+          <p class="text-text-secondary mt-1">Visualizing overlapping genes across <span
+              class="text-primary font-bold">2 selected conditions</span></p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button
+            class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-text-secondary hover:text-slate-900 bg-white border border-slate-200 hover:border-slate-300 rounded-lg transition-all shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">download</span>
+            Export
+          </button>
+          <button
+            class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-all shadow-md hover:shadow-lg">
+            <span class="material-symbols-outlined text-[18px]">save</span>
+            Save Analysis
+          </button>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto p-8 bg-slate-50/50">
+        <div class="grid grid-cols-12 gap-6 h-full pb-8">
+          <div class="col-span-12 lg:col-span-8 flex flex-col gap-6">
+            <div
+              class="bg-white rounded-xl border border-slate-200 p-6 shadow-card relative flex flex-col min-h-[500px]">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-lg font-bold text-slate-800">Intersection Overview</h3>
+                <div class="flex gap-4 text-xs">
+                  <div class="flex items-center gap-2 bg-slate-50 px-2 py-1 rounded border border-slate-100">
+                    <span class="size-3 rounded-full bg-primary/80"></span>
+                    <span class="text-slate-600 font-medium">WT vs Mutant</span>
+                  </div>
+                  <div class="flex items-center gap-2 bg-slate-50 px-2 py-1 rounded border border-slate-100">
+                    <span class="size-3 rounded-full bg-accent-secondary/80"></span>
+                    <span class="text-slate-600 font-medium">Drug A vs Ctrl</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-1 flex items-center justify-center relative my-4">
+                <div class="relative w-[400px] h-[300px]">
+                  <div
+                    class="absolute left-10 top-10 w-64 h-64 rounded-full bg-primary/20 border-2 border-primary mix-blend-multiply flex items-center justify-start pl-12 group cursor-pointer hover:bg-primary/30 transition-all z-10 shadow-sm">
+                    <span
+                      class="text-slate-700 font-bold text-xl drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 left-10">345</span>
+                  </div>
+                  <div
+                    class="absolute right-10 top-10 w-64 h-64 rounded-full bg-accent-secondary/20 border-2 border-accent-secondary mix-blend-multiply flex items-center justify-end pr-12 group cursor-pointer hover:bg-accent-secondary/30 transition-all z-10 shadow-sm">
+                    <span
+                      class="text-slate-700 font-bold text-xl drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 right-10">1,203</span>
+                  </div>
+                  <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <div class="text-center">
+                      <span class="block text-3xl font-black text-slate-800 drop-shadow-sm">142</span>
+                      <span class="text-xs font-bold text-slate-600 uppercase tracking-wide">Common Genes</span>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute -left-4 bottom-10 bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 z-30 shadow-md">
+                    WT vs Mutant
+                  </div>
+                  <div
+                    class="absolute -right-4 bottom-10 bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 z-30 shadow-md">
+                    Drug A vs Control
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-100 mt-auto">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-slate-800">15,400</div>
+                  <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Total Genes Analyzed
+                  </div>
+                </div>
+                <div class="text-center border-l border-r border-slate-100">
+                  <div class="text-2xl font-bold text-primary">142</div>
+                  <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Significant Overlap
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-accent-secondary">8.4%</div>
+                  <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Discovery Rate</div>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div
+                class="bg-white rounded-xl border border-slate-200 p-5 shadow-card hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-center mb-4">
+                  <h4 class="text-sm font-bold text-slate-800">Top 50 Variable Genes (Heatmap)</h4>
+                  <button class="text-slate-400 hover:text-primary transition-colors"><span
+                      class="material-symbols-outlined text-lg">more_horiz</span></button>
+                </div>
+                <div class="h-32 w-full rounded bg-cover bg-center overflow-hidden border border-slate-100"
+                  data-alt="Heatmap visualization of gene expression"
+                  style="background-image: linear-gradient(90deg, #f8fafc 0%, #f8fafc 100%), repeating-linear-gradient(90deg, transparent, transparent 10px, #e2e8f0 10px, #e2e8f0 12px);">
+                  <div class="flex h-full w-full gap-0.5 opacity-90">
+                    <div class="flex-1 bg-gradient-to-b from-red-400 via-white to-green-400 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-red-500 via-white to-green-300 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-red-300 via-white to-green-500 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-white via-green-400 to-red-400 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-green-400 via-white to-red-500 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-red-400 via-white to-green-400 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-red-500 via-white to-green-300 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-red-300 via-white to-green-500 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-white via-green-400 to-red-400 rounded-sm"></div>
+                    <div class="flex-1 bg-gradient-to-b from-green-400 via-white to-red-500 rounded-sm"></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white rounded-xl border border-slate-200 p-5 shadow-card hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-center mb-4">
+                  <h4 class="text-sm font-bold text-slate-800">Expression Profile (Scatter)</h4>
+                  <button class="text-slate-400 hover:text-primary transition-colors"><span
+                      class="material-symbols-outlined text-lg">more_horiz</span></button>
+                </div>
+                <div
+                  class="h-32 w-full relative flex items-end justify-between px-2 pb-2 border-b border-l border-slate-200"
+                  data-alt="Scatter plot chart visualization">
+                  <div class="absolute bottom-4 left-4 size-2 rounded-full bg-primary/80 ring-2 ring-white"></div>
+                  <div class="absolute bottom-10 left-12 size-2 rounded-full bg-accent-secondary/80 ring-2 ring-white">
+                  </div>
+                  <div class="absolute bottom-20 left-20 size-2 rounded-full bg-primary/80 ring-2 ring-white"></div>
+                  <div class="absolute top-4 right-10 size-2 rounded-full bg-accent-secondary/80 ring-2 ring-white">
+                  </div>
+                  <div class="absolute top-12 right-24 size-2 rounded-full bg-primary/80 ring-2 ring-white"></div>
+                  <div class="absolute bottom-1/2 left-1/2 size-2 rounded-full bg-slate-300/50"></div>
+                  <div
+                    class="absolute -left-6 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] font-medium text-slate-400">
+                    Log2FC</div>
+                  <div class="absolute left-1/2 bottom-[-16px] -translate-x-1/2 text-[9px] font-medium text-slate-400">
+                    Expression</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-span-12 lg:col-span-4 flex flex-col h-full bg-white rounded-xl border border-slate-200 shadow-card overflow-hidden">
+            <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+              <h3 class="text-sm font-bold uppercase tracking-wider text-slate-700">Intersection Details</h3>
+              <span
+                class="bg-primary/10 text-primary px-2 py-0.5 rounded text-xs font-bold border border-primary/10">142
+                Genes</span>
+            </div>
+            <div class="p-3 border-b border-slate-100">
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-lg">filter_list</span>
+                <input
+                  class="w-full h-8 rounded border border-slate-200 bg-white pl-8 pr-3 text-xs text-slate-700 focus:ring-1 focus:ring-primary focus:border-primary placeholder-slate-400 shadow-sm"
+                  placeholder="Filter genes in selection..." />
+              </div>
+            </div>
+            <div class="flex-1 overflow-y-auto">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-50 sticky top-0 z-10 shadow-sm">
+                  <tr>
+                    <th
+                      class="py-3 px-4 text-[10px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200">
+                      Gene</th>
+                    <th
+                      class="py-3 px-4 text-[10px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 text-right">
+                      Log2FC</th>
+                    <th
+                      class="py-3 px-4 text-[10px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 text-right">
+                      Adj. P</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">TP53</td>
+                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+2.45</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">1.2e-8</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">BRCA1</td>
+                    <td class="py-3 px-4 text-right font-mono text-red-500 font-medium">-1.82</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">4.5e-6</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">EGFR</td>
+                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+3.10</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">2.1e-12</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">MYC</td>
+                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+1.55</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">0.001</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">VEGFA</td>
+                    <td class="py-3 px-4 text-right font-mono text-red-500 font-medium">-2.01</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">1.8e-4</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">KRAS</td>
+                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+4.12</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">9.2e-20</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">AKT1</td>
+                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+1.67</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">0.004</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">PTEN</td>
+                    <td class="py-3 px-4 text-right font-mono text-red-500 font-medium">-1.45</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">0.032</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">CDK4</td>
+                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+2.88</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">3.3e-9</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
+                    <td class="py-3 px-4 font-semibold text-primary">RB1</td>
+                    <td class="py-3 px-4 text-right font-mono text-red-500 font-medium">-3.01</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-500">1.1e-15</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="p-4 border-t border-slate-100 bg-slate-50 text-center">
+              <button class="text-xs text-primary font-bold hover:underline hover:text-primary-hover">View full list in
+                Data Explorer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+</body>
+
+</html>

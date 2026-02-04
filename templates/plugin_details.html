@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plugin Details &amp; Documentation - Delta (DiffBlok)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ecb6",
+            "background-light": "#f6f8f8",
+            "background-dark": "#10221d",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden font-display">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#dbe6e3] dark:border-white/10 bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111816] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Delta (DiffBlok)</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#61897f] flex border-none bg-background-light dark:bg-white/5 items-center justify-center pl-4 rounded-l-lg" data-icon="search">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111816] dark:text-white focus:outline-0 focus:ring-0 border-none bg-background-light dark:bg-white/5 focus:border-none h-full placeholder:text-[#61897f] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal" placeholder="Search plugins..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-[#111816] dark:text-white text-sm font-medium leading-normal" href="#">Marketplace</a>
+<a class="text-[#111816] dark:text-white text-sm font-medium leading-normal" href="#">Workspaces</a>
+<a class="text-[#111816] dark:text-white text-sm font-medium leading-normal" href="#">Analysis</a>
+<a class="text-[#111816] dark:text-white text-sm font-medium leading-normal" href="#">Help</a>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#111816] text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Profile</span>
+</button>
+</div>
+</header>
+<main class="flex flex-col items-center flex-1 py-10">
+<div class="layout-content-container flex flex-col max-w-[1200px] w-full px-6 md:px-10">
+<!-- ProfileHeader Section -->
+<div class="flex flex-col @container mb-6 bg-white dark:bg-white/5 p-8 rounded-xl border border-[#dbe6e3] dark:border-white/10">
+<div class="flex w-full flex-col gap-6 @[520px]:flex-row @[520px]:justify-between">
+<div class="flex gap-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl min-h-32 w-32 shadow-sm" data-alt="Minimalist AI network icon on teal background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCB3FwY0mhRnGxq6jq35qNZNfMW2XZI0osGf-3BY2W-9c5Zlwrj94sSh-4rdujh5qYaR_ZBzlBd_8bX96OQ2CQX1VcAtXXCihOpw7EB0s-djdRKb9l5w1KqUY-cIkFlJT4jkQvRqhD9TQeyT-QIH-sESfz3n3wSx_MZNlfWt48H5Kvce5yS3w8rCQQCiX5fHaM_s2gF4RTJtJMxI9mvqehTumQMbLg_5WimpJS4dDB-Wt-ibSC56Rayw71lsV31OchW209HH-EEE4wY");'></div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-1">
+<p class="text-[#111816] dark:text-white text-[28px] font-bold leading-tight tracking-[-0.015em]">Anomaly Detection AI</p>
+<span class="inline-flex items-center rounded-full bg-primary/20 px-2.5 py-0.5 text-xs font-semibold text-[#0c7a5d] dark:text-primary">
+<span class="material-symbols-outlined text-sm mr-1">verified</span> BlokBio Verified
+                    </span>
+</div>
+<p class="text-[#61897f] dark:text-[#a0c4bb] text-lg font-normal leading-normal max-w-2xl">
+                    Automated identification of outliers in bulk RNA-seq counts using machine learning algorithms. Ensure robust downstream differential expression analysis.
+                  </p>
+<div class="flex gap-4 mt-3">
+<div class="flex items-center gap-1 text-[#61897f] text-sm">
+<span class="material-symbols-outlined text-sm">terminal</span> v1.2.4
+                    </div>
+<div class="flex items-center gap-1 text-[#61897f] text-sm">
+<span class="material-symbols-outlined text-sm">cloud</span> AWS Lambda Optimized
+                    </div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 @[480px]:w-auto w-full">
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-[#111816] text-sm font-bold leading-normal tracking-[0.015em] shadow-md hover:bg-opacity-90 transition-all">
+<span class="truncate">Add to Workspace</span>
+</button>
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#f0f4f3] dark:bg-white/10 text-[#111816] dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">View Demo</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-6">
+<div class="flex border-b border-[#dbe6e3] dark:border-white/10 px-4 gap-12">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-[#111816] dark:text-white pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Overview</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#61897f] pb-[13px] pt-4 hover:text-[#111816] dark:hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Technical Specs</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#61897f] pb-[13px] pt-4 hover:text-[#111816] dark:hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Reviews (12)</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#61897f] pb-[13px] pt-4 hover:text-[#111816] dark:hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Documentation</p>
+</a>
+</div>
+</div>
+<!-- Content Grid: Main & Sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Side: Main Content -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- ActionPanel: Smart Summary -->
+<div class="p-0 @container">
+<div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-[#dbe6e3] dark:border-white/10 bg-white dark:bg-white/5 p-6 @[480px]:flex-row @[480px]:items-center shadow-sm">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<p class="text-[#111816] dark:text-white text-lg font-bold leading-tight">Smart Summary</p>
+</div>
+<p class="text-[#61897f] dark:text-[#a0c4bb] text-base font-normal leading-normal">
+                      This AI-driven module automatically flags biological replicates that deviate significantly from the cohort mean, ensuring your downstream differential expression analysis is powered by high-quality, consistent data.
+                    </p>
+</div>
+<a class="text-sm font-bold leading-normal tracking-[0.015em] flex items-center gap-2 text-[#111816] dark:text-primary whitespace-nowrap" href="#">
+                    Learn more
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Feature Description -->
+<div class="flex flex-col gap-4">
+<h3 class="text-xl font-bold text-[#111816] dark:text-white">Workflow Description</h3>
+<p class="text-[#61897f] dark:text-[#a0c4bb] leading-relaxed">
+                  Anomaly Detection AI utilizes an ensemble of Isolation Forests and Robust PCA to identify problematic samples in bulk RNA-seq datasets. It is designed to work seamlessly with Delta's core processing engine, allowing for real-time quality control during the ingestion phase.
+                </p>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-[#111816] dark:text-white">Zero-configuration setup for raw counts</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-[#111816] dark:text-white">Optimized for serverless AWS Lambda</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-[#111816] dark:text-white">Interactive PCA &amp; Heatmap outliers</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-[#111816] dark:text-white">Exportable JSON reports for auditors</span>
+</li>
+</ul>
+</div>
+<!-- ImageGrid: Screenshots -->
+<div class="flex flex-col gap-4">
+<h3 class="text-xl font-bold text-[#111816] dark:text-white">Interface Preview</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl border border-[#dbe6e3] dark:border-white/10" data-alt="Heatmap visualization showing gene expression outliers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuArsap4IbWQsS1keL_NJPBWnixFIutfiYQLwO9QuQhB6cQOu8tuhsG1c2VYeFyCTuLEfry0CVydci1hKq2dw-iTs-5I2AJRg93L_G92G9m6YK223FvzcM4Vr66ZSxpw3u-KeZrIxATgKqWnASbsGJYO8IPL_aLwqLgoJCw2wiNytXe2royzgRG8yIQCYpHFoHdfjB9YhXwOTeReSfIhXCp4oTrrQj6lHGeRu34A4C7Wiu201khl85NC9CT50KuaJsREC0RXNX9UlUfU");'></div>
+<p class="text-xs text-[#61897f] px-1">Heatmap analysis of variance across replicates.</p>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl border border-[#dbe6e3] dark:border-white/10" data-alt="PCA plot showing sample clustering and outliers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBiCw74dr-sZd4ETvTsBuJVQ5iVqjAFi2XmZzVUz2rX-ANL0qs2M0vmJX8aVUYoQMhy2CFB9z4zzNc42Q_khxa_Esi_6rUKC7Jj5yI604xoHXGp8M1YUiFQdLiZuzDsbH-VYRvV_nGm2qIJanFNZViuk6MUhyjDAxcqhOdCVxnS5WI9zkp2Dgny0tcv_pUXlmYp_QAXQ93cDJBaUtYFwqf-I-bvnT1apbI6yz0zx3Xa6YAqc7ZevmJP77ETTvJcb8D9LIGdiqQzo_C4");'></div>
+<p class="text-xs text-[#61897f] px-1">Robust Principal Component Analysis (RPCA) output.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Sidebar Metadata -->
+<div class="flex flex-col gap-6">
+<div class="rounded-xl border border-[#dbe6e3] dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm">
+<h4 class="text-base font-bold text-[#111816] dark:text-white mb-6">Plugin Details</h4>
+<div class="flex flex-col gap-5">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-[#61897f] uppercase tracking-wider">Developer</span>
+<span class="text-sm font-medium text-[#111816] dark:text-white">BlokBio Core Team</span>
+</div>
+<span class="material-symbols-outlined text-[#61897f]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-[#61897f] uppercase tracking-wider">Last Updated</span>
+<span class="text-sm font-medium text-[#111816] dark:text-white">Oct 24, 2023</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-[#61897f] uppercase tracking-wider">Inputs</span>
+<div class="flex flex-wrap gap-2 mt-1">
+<span class="px-2 py-0.5 rounded bg-background-light dark:bg-white/10 text-[11px] font-mono text-[#111816] dark:text-white border border-[#dbe6e3] dark:border-white/20">.FASTQ</span>
+<span class="px-2 py-0.5 rounded bg-background-light dark:bg-white/10 text-[11px] font-mono text-[#111816] dark:text-white border border-[#dbe6e3] dark:border-white/20">.BAM</span>
+<span class="px-2 py-0.5 rounded bg-background-light dark:bg-white/10 text-[11px] font-mono text-[#111816] dark:text-white border border-[#dbe6e3] dark:border-white/20">CSV/TSV</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-[#61897f] uppercase tracking-wider">Architecture</span>
+<span class="text-sm font-medium text-[#111816] dark:text-white">Serverless (AWS Lambda)</span>
+</div>
+<hr class="border-[#dbe6e3] dark:border-white/10"/>
+<div class="flex flex-col gap-3">
+<a class="flex items-center gap-2 text-sm font-bold text-primary hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">description</span>
+                      Read Documentation
+                    </a>
+<a class="flex items-center gap-2 text-sm font-bold text-primary hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">mail</span>
+                      Support Contact
+                    </a>
+<a class="flex items-center gap-2 text-sm font-bold text-primary hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">history</span>
+                      Changelog
+                    </a>
+</div>
+</div>
+</div>
+<!-- Small secondary card -->
+<div class="rounded-xl bg-background-dark dark:bg-primary/10 p-6 text-white border border-white/10">
+<p class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Pro Tip</p>
+<p class="text-sm leading-relaxed opacity-90">
+                  Combine this plugin with the "Normalization X" module to automatically scale your counts before anomaly detection for better accuracy.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer-like space -->
+<footer class="py-10 border-t border-[#dbe6e3] dark:border-white/10 mt-10">
+<div class="max-w-[1200px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-[#61897f] text-sm">
+<p>© 2023 BlokBio Inc. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-[#111816] dark:hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-[#111816] dark:hover:text-white" href="#">Terms of Service</a>
+<a class="hover:text-[#111816] dark:hover:text-white" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

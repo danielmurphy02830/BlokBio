@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delta (DiffBlok) - Developer Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ecb6",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#10221d",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .markdown-editor {
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111816] dark:text-white min-h-screen">
+<div class="flex flex-col lg:flex-row min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-full lg:w-72 bg-white dark:bg-zinc-900 border-r border-[#dbe6e3] dark:border-zinc-800 flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-3">
+<div class="bg-primary size-10 rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl font-bold">genetics</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#111816] dark:text-white text-lg font-bold leading-tight">Delta</h1>
+<p class="text-[#61897f] text-xs font-medium uppercase tracking-wider">DiffBlok Portal</p>
+</div>
+</div>
+<!-- Stepper Progress -->
+<nav class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+<span class="material-symbols-outlined fill-1">info</span>
+<p class="text-sm font-semibold">App Details</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-semibold">Technical Config</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+<span class="material-symbols-outlined">description</span>
+<p class="text-sm font-semibold">Documentation</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+<span class="material-symbols-outlined">verified</span>
+<p class="text-sm font-semibold">Review</p>
+</div>
+</nav>
+</div>
+<!-- Developer Resources Section -->
+<div class="mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800 flex flex-col gap-4">
+<p class="text-xs font-bold text-zinc-400 uppercase px-4">Developer Resources</p>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">api</span>
+<span>API Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">schema</span>
+<span>Plugin Schema</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span>Sandboxed Testing</span>
+</a>
+</div>
+<button class="mt-4 flex items-center justify-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 py-3 rounded-lg text-sm font-bold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                    Launch Sandbox
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Header/Breadcrumbs -->
+<header class="p-6 lg:px-12 flex flex-col gap-6">
+<div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-zinc-900 dark:text-white">Submit Plugin</span>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-3xl font-black text-zinc-900 dark:text-white tracking-tight">Submission: App Details</h2>
+<p class="text-[#61897f] max-w-2xl leading-relaxed">
+                        Provide the basic identification and functional description for your genomic analysis plugin. These details will be visible to researchers in the Delta marketplace.
+                    </p>
+</div>
+</header>
+<!-- Form Container -->
+<section class="px-6 lg:px-12 pb-12 flex-1">
+<div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-sm overflow-hidden">
+<div class="p-8 lg:p-10 space-y-8">
+<!-- Top Row Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-zinc-700 dark:text-zinc-300">Plugin Name</label>
+<input class="w-full h-12 px-4 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" placeholder="e.g. Bulk-RNA Visualizer" type="text"/>
+<p class="text-[11px] text-zinc-400 font-medium">Unique name for your analysis tool.</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-zinc-700 dark:text-zinc-300">Version</label>
+<input class="w-full h-12 px-4 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" placeholder="1.0.0" type="text"/>
+<p class="text-[11px] text-zinc-400 font-medium">Use Semantic Versioning (SemVer).</p>
+</div>
+</div>
+<!-- Markdown Description -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<label class="text-sm font-bold text-zinc-700 dark:text-zinc-300">Description</label>
+<div class="flex bg-zinc-100 dark:bg-zinc-800 p-1 rounded-lg">
+<button class="px-3 py-1 text-xs font-bold bg-white dark:bg-zinc-700 rounded shadow-sm">Write</button>
+<button class="px-3 py-1 text-xs font-bold text-zinc-500 hover:text-zinc-700 transition-colors">Preview</button>
+</div>
+</div>
+<textarea class="w-full markdown-editor p-4 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none" placeholder="Describe the biological insight this plugin provides. Support for Markdown is enabled."></textarea>
+</div>
+<!-- Drag and Drop Area -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-zinc-700 dark:text-zinc-300">Code Package (ZIP)</label>
+<div class="border-2 border-dashed border-primary/40 bg-primary/5 rounded-2xl p-10 flex flex-col items-center justify-center text-center group cursor-pointer hover:border-primary hover:bg-primary/10 transition-all">
+<div class="size-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">upload_file</span>
+</div>
+<h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">Upload your AWS Lambda-compatible package</h3>
+<p class="text-sm text-zinc-500 mb-6">Drag and drop your .zip file here, or <span class="text-primary font-bold underline">browse files</span></p>
+<div class="flex items-center gap-4 text-xs font-medium text-zinc-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span> Max 50MB</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span> .zip format only</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="bg-zinc-50 dark:bg-zinc-800/50 p-6 lg:px-10 flex flex-wrap gap-4 items-center justify-between border-t border-zinc-100 dark:border-zinc-800">
+<button class="px-6 py-3 text-sm font-bold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+                            Save Draft
+                        </button>
+<div class="flex items-center gap-3">
+<button class="px-8 py-3 bg-primary text-zinc-900 font-black rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
+                                Next: Technical Config
+                                <span class="material-symbols-outlined font-bold">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

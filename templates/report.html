@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delta (DiffBlok) - Reporting</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d9488","primary-dark": "#0f766e","background-light": "#ffffff",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1e2832",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8fafc; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }.toggle-checkbox:checked {
+            right: 0;
+            border-color: #0d9488;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0d9488;
+        }.a4-preview {
+            aspect-ratio: 1 / 1.414;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 font-display overflow-x-hidden transition-colors duration-200">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<header class="flex flex-none items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 px-6 py-3 bg-surface-light z-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-slate-900">
+<div class="flex items-center justify-center size-8 bg-primary/10 rounded text-primary">
+<span class="material-symbols-outlined">genetics</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Delta (DiffBlok)</h2>
+</div>
+<div class="hidden md:flex flex-col min-w-40 h-10 w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 border border-transparent focus-within:border-primary/50 transition-colors">
+<div class="text-slate-400 flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full min-w-0 flex-1 resize-none bg-transparent border-none text-sm text-slate-900 focus:outline-0 focus:ring-0 placeholder:text-slate-400 px-3 h-full font-normal leading-normal" placeholder="Search analysis IDs..."/>
+</div>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-slate-900 text-sm font-medium leading-normal" href="#">Projects</a>
+<a class="text-slate-600 hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Settings</a>
+</nav>
+<div class="h-6 w-px bg-slate-200"></div>
+<button class="relative flex items-center justify-center size-9 rounded-full hover:bg-slate-100 text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-surface-light"></span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border border-slate-200" data-alt="User avatar profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC1v5cZLLQkfrzgN3yTG9b25V2dA92B34prJ_xJb9IH3jA8DH5s6SGIdNA55bj5aFs-uscRsTWLE4kjaDfuwaFFYbENFI4ps-2B8XxUWmgxv29RP0iE9-yFb0uTYqJyLoScR-hpCck5fFEzDBCoDANXGPEPm0ANbF4MvgFk553W7GIUlDZME3DQJZ4Ymr1K5QbURsVctO5g_gjQyL6FHvZUGN4A8JANfSbXpYfMRKfMSOP55g48Tg0hHF4rLUGrmkPpCJpOQYgMH1x0");'></div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<div class="flex-1 overflow-y-auto bg-background-light">
+<div class="mx-auto max-w-[1600px] px-4 md:px-8 py-6 flex flex-col gap-6 h-full">
+<div class="flex flex-col gap-4 flex-none">
+<div class="flex flex-wrap items-center gap-2 text-sm">
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-slate-300">/</span>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Analysis</a>
+<span class="text-slate-300">/</span>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">RNA-Seq-2023-X</a>
+<span class="text-slate-300">/</span>
+<span class="text-primary font-medium">Export</span>
+</div>
+<div class="flex flex-wrap justify-between items-end gap-4 pb-4 border-b border-slate-200">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Reporting &amp; Evidence Pack</h1>
+<p class="text-slate-500 max-w-2xl">
+                                    Configure your final report. Select plots, verify AI interpretations, and generate a signed PDF with full provenance audit trails.
+                                </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 bg-surface-light font-bold text-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Save Draft</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 px-5 rounded-lg bg-primary hover:bg-primary-dark text-white shadow-lg shadow-teal-500/20 font-bold text-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Export PDF</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1 min-h-0">
+<div class="lg:col-span-5 xl:col-span-4 flex flex-col gap-6">
+<div class="p-5 rounded-xl bg-surface-light border border-slate-200 shadow-sm">
+<h3 class="text-slate-900 font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                                    Report Metadata
+                                </h3>
+<div class="grid gap-4">
+<div>
+<label class="block text-xs font-medium text-slate-500 mb-1 uppercase tracking-wider">Project Title</label>
+<input class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-0" type="text" value="Liver Cancer Drug Response - Phase 2"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-slate-500 mb-1 uppercase tracking-wider">Analyst</label>
+<input class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-0" type="text" value="Dr. A. Vance"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-500 mb-1 uppercase tracking-wider">Date</label>
+<input class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm text-slate-500 opacity-70 cursor-not-allowed" readonly="" type="text" value="Oct 24, 2023"/>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<details class="group bg-surface-light border border-slate-200 rounded-xl overflow-hidden" open="">
+<summary class="flex cursor-pointer items-center justify-between px-5 py-4 select-none hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded flex items-center justify-center bg-green-500/10 text-green-500">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<span class="text-slate-900 font-bold">Quality Control (QC)</span>
+<span class="px-2 py-0.5 rounded-full bg-slate-100 text-xs font-medium text-slate-500">3 Selected</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-4 border-t border-slate-200 bg-slate-50/50 grid grid-cols-2 gap-3">
+<div class="relative group/card flex flex-col gap-2 p-2 rounded-lg border border-slate-200 bg-surface-light hover:border-primary transition-colors">
+<div class="aspect-video w-full rounded bg-slate-100 bg-cover bg-center" data-alt="Abstract scatter plot showing PCA clusters" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsQMcDcCqO6-dYVIxtrYoVcajYAA-m8_gKqtuzp4CGtp2NpU44I-rVn7aZAqwTKcZuyBzXZ-ZsRXaOp532YUCQoCMTOACZec2_Yc63fOEQPYnk30pRuVjoV5SHF5YL4vj30g5cn_AgU_S_mbtjFBjviX2F7ZhtP4K-qLh2Pzo4LrqXLAY3pUKtcd2IfOwrZCS2GgG9lgKumQHvddAAHQ2SviEkoerhvyN-WvwUshe2yyn_PlXh4IzaawFxX3RlUaRiDSLRk_b-FCQV');">
+<div class="absolute top-2 right-2">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-offset-0 focus:ring-0 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700">PCA Plot</span>
+</div>
+<div class="relative group/card flex flex-col gap-2 p-2 rounded-lg border border-slate-200 bg-surface-light hover:border-primary transition-colors">
+<div class="aspect-video w-full rounded bg-slate-100 bg-cover bg-center" data-alt="Bar chart showing read quality distribution" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDil7c3o6dcpvomkIrVLoOhuNnHzsVfYrgeggpsKdUYU7R_H1BOEZ4l4qSKCkW9x7Ocze-bBiwvUZH6R993aYhf5JJQ_C9LSP0L52KEDsToVpB8CXtaFT29RG63dInQixhziQhRSdFJm8kyK4aMGR3HswwtXJe0FwKiol5ZAQ_rojCyEl-dq4Y9cb3mPqhOYCMbb3q7nTJQgaGE4JmKNyfofIZnBs2xusDXz3BrwZrFpJsHC0f5s0DMbIG8eBFP9ciVjQvlLfL_hUiw');">
+<div class="absolute top-2 right-2">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-offset-0 focus:ring-0 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700">MultiQC Summary</span>
+</div>
+<div class="relative group/card flex flex-col gap-2 p-2 rounded-lg border border-slate-200 bg-surface-light hover:border-primary transition-colors">
+<div class="aspect-video w-full rounded bg-slate-100 bg-cover bg-center" data-alt="Heatmap grid pattern" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxgi2DAXghwbj90FnjBgsfiO9j9XBqyeFFxNkuM-93zChRvPlmtYSRuElzBLyALwnJCyVm1DGPgn2s-T75pmORKv-iG_gvOrcO-7tH4bLLKVQObAiAFIjXTtqfscvH8qpkp-XZQtT2yY8x2GIEKyyhzhcAb7z_Ee5wXDlJVxigoahsDmFOTwisOBzwdi4y_ieGK-yMQ_BM2cS4wOVfngMd-_MsmqRD1E5M8a-YADMqBC85CaguUrfO1x28PlVKjJEDZKRCtYTmx2zr');">
+<div class="absolute top-2 right-2">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-offset-0 focus:ring-0 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700">Correlation Heatmap</span>
+</div>
+</div>
+</details>
+<details class="group bg-surface-light border border-slate-200 rounded-xl overflow-hidden" open="">
+<summary class="flex cursor-pointer items-center justify-between px-5 py-4 select-none hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded flex items-center justify-center bg-primary/10 text-primary">
+<span class="material-symbols-outlined">query_stats</span>
+</div>
+<span class="text-slate-900 font-bold">Differential Expression</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-4 border-t border-slate-200 bg-slate-50/50 grid grid-cols-2 gap-3">
+<div class="relative group/card flex flex-col gap-2 p-2 rounded-lg border border-primary bg-surface-light shadow-[0_0_10px_rgba(13,148,136,0.15)] transition-colors">
+<div class="aspect-video w-full rounded bg-slate-100 bg-cover bg-center" data-alt="Volcano plot showing gene expression spread" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA4fjRzItYMg_DW5l81VOzEJlSVvYrciDa8s2TFNkSzwF37lG4CBue7Wp5_pPWa3PjdzB4Cqq0G1YGqX11dL0LplBpad-w8HHaLzFF0QduZmkupJNLacEZIDfe2rZ2nZKrvnRQ_Ugef8YDi7nHn4hmAS4kvVVsHqD7yeBqjJ8jOBz5h2s_KYMZPyOKsLTSqbY-wMBW6lt7w7ES8MYBWsuM6WqUxcDry7Rn5wBZHg3KkLeWE2oq4p3KNqUz-rTJvcjLZPzDlwIYRsMnV');">
+<div class="absolute top-2 right-2">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-offset-0 focus:ring-0 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium text-slate-700">Volcano Plot</span>
+<span class="text-[10px] text-primary bg-primary/10 px-1.5 py-0.5 rounded">Primary</span>
+</div>
+</div>
+<div class="relative group/card flex flex-col gap-2 p-2 rounded-lg border border-slate-200 bg-surface-light hover:border-primary transition-colors">
+<div class="aspect-video w-full rounded bg-slate-100 bg-cover bg-center" data-alt="MA Plot scatter distribution" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdugqsjMLEz2dH0RLnXM2DVkYQh617FAz-MQvukc-s4itTok8691DQXkDrNvabb1OsrUuZNIypfUfdl10oL3l2hTItkQ5Y25KFwqgWiu7MpMs-iPVIgPabjfP36gtjv1tXcdmNn3gh9qxrGTNC4OQVLcUlxgZBUotsZ1A_CetZyLk_gg4xl7v3euE5lhVJAqp4R_3LmtGBm_9bUIZPCNZ4vFcO0uNJIhdnaE9DPGp8JEI06s9aJmR-atfO7ZwMyVmki9Q9p7J7qHOn');">
+<div class="absolute top-2 right-2">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-offset-0 focus:ring-0 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700">MA Plot</span>
+</div>
+<div class="col-span-2 relative group/card flex items-center justify-between p-3 rounded-lg border border-slate-200 bg-surface-light hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="bg-slate-100 p-2 rounded">
+<span class="material-symbols-outlined text-slate-500 text-lg">list_alt</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-700">Top 50 Genes Table</span>
+<span class="text-[10px] text-slate-400">Includes Log2FC &amp; p-adj values</span>
+</div>
+</div>
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-offset-0 focus:ring-0 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+</details>
+<details class="group bg-surface-light border border-slate-200 rounded-xl overflow-hidden">
+<summary class="flex cursor-pointer items-center justify-between px-5 py-4 select-none hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded flex items-center justify-center bg-purple-500/10 text-purple-500">
+<span class="material-symbols-outlined">bubble_chart</span>
+</div>
+<span class="text-slate-900 font-bold">Pathway Analysis</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-4 border-t border-slate-200 bg-slate-50/50">
+<p class="text-sm text-slate-500">Options available in full version.</p>
+</div>
+</details>
+</div>
+</div>
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-4">
+<div class="flex justify-between items-center px-2">
+<h3 class="text-slate-900 font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500">visibility</span>
+                                    Live Preview
+                                </h3>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span>Page 1 of 4</span>
+<button class="p-1 hover:text-slate-900"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 hover:text-slate-900"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="w-full bg-slate-100 border border-slate-200 p-4 md:p-8 rounded-xl overflow-hidden shadow-inner flex justify-center items-start">
+<div class="a4-preview w-full max-w-[595px] bg-white text-slate-900 shadow-2xl flex flex-col relative">
+<div class="flex justify-between items-center p-8 border-b border-slate-100">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">genetics</span>
+</div>
+<span class="font-bold text-lg tracking-tight">Delta Bio</span>
+</div>
+<div class="text-right">
+<div class="text-xs text-slate-400 uppercase tracking-widest font-bold">Confidential</div>
+<div class="text-xs text-slate-500">Ref: RNA-23-X</div>
+</div>
+</div>
+<div class="p-8 flex-1 flex flex-col gap-6">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 mb-2">Liver Cancer Drug Response</h1>
+<div class="flex gap-4 text-xs text-slate-500">
+<span><strong class="text-slate-700">Analysis Date:</strong> Oct 24, 2023</span>
+<span><strong class="text-slate-700">Samples:</strong> 12 (6 Treated vs 6 Control)</span>
+</div>
+</div>
+<div class="relative pl-4 border-l-4 border-primary/30 rounded bg-slate-50 p-4">
+<div class="absolute -left-[14px] top-4 bg-white border border-primary/30 text-primary rounded-full p-0.5">
+<span class="material-symbols-outlined text-sm block">auto_awesome</span>
+</div>
+<h4 class="text-xs font-bold text-primary uppercase mb-1">AI Executive Summary</h4>
+<p class="text-xs leading-relaxed text-slate-600">
+                                                Differential expression analysis identified 452 significantly dysregulated genes (p-adj &lt; 0.05). Notably, the P53 signaling pathway shows marked downregulation in the treated group compared to controls, suggesting a potential suppression mechanism. Quality control metrics indicate high library complexity across all samples.
+                                            </p>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="flex flex-col gap-1">
+<div class="aspect-square rounded border border-slate-100 bg-slate-50 bg-cover bg-center" data-alt="Volcano plot data visualization" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpysXkP6_8DA-5-ZY2w80-2rF_fFmA-qOg7pAoIVGL9_NB7gBDiDDdtq-D5A89i3veSLZh-iyXbgq8m9yocT9SCvh7b4nyJUbc0ULPcwj_kqs5FQ_SXwyxBZm7Fee6jBgg7WwT935u5XR8iZIeG11xoXhTAfVZnfuUn9T1-hbqcWgcD9K-BeGew9PBPA6icdAVcGKwsCfr6xA4LRSF1T6_uqydg9RxDGz6nGpSX_6KlxYPJfGjWaATG5S7KZi8peNxOaJxEh33MXhJ');"></div>
+<span class="text-[10px] text-center font-medium text-slate-500">Fig 1. Volcano Plot</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="aspect-square rounded border border-slate-100 bg-slate-50 bg-cover bg-center" data-alt="PCA plot data visualization" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCfx141WZlqUEcLKdxvE2ZznQ83ou7MU1Q09Jt3WQ3XC9cRTnL30VInFFzoOZ_T34_zMruD4mRODjf-Uht_v67s-v8UVwQYZQ8FDv1Ck1bO6k8j16UGxAeVlDnS3bWHvNCuR8xYmrnUGaZGdjYae_EjcLGBPLRuRZIyRaiOAMhBDam9-BSTKzQAr5oDGq37FV5d3UvkbuEgxbNPYqKjpPJLbLklaosRQYaWoi1mnYtPVwxYBjq4JJ0MeGCCXDAVLYgE-r1yP4XhBPde');"></div>
+<span class="text-[10px] text-center font-medium text-slate-500">Fig 2. Principal Component Analysis</span>
+</div>
+</div>
+</div>
+<div class="mt-auto bg-slate-50 border-t border-slate-200 p-6 text-[10px] font-mono text-slate-400">
+<div class="flex items-center gap-2 mb-2 text-slate-600 font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">fingerprint</span>
+                                            Provenance Manifest
+                                        </div>
+<div class="grid grid-cols-2 gap-x-8 gap-y-1">
+<div class="flex justify-between border-b border-slate-200 border-dashed pb-1">
+<span>Engine:</span>
+<span class="text-slate-600">Delta/DiffBlok v2.4.1</span>
+</div>
+<div class="flex justify-between border-b border-slate-200 border-dashed pb-1">
+<span>Compute:</span>
+<span class="text-slate-600">AWS Lambda (us-east-1)</span>
+</div>
+<div class="flex justify-between border-b border-slate-200 border-dashed pb-1">
+<span>Pipeline ID:</span>
+<span class="text-slate-600">pl-99382-AX</span>
+</div>
+<div class="flex justify-between border-b border-slate-200 border-dashed pb-1">
+<span>Genome:</span>
+<span class="text-slate-600">hg38 (Ensembl 104)</span>
+</div>
+<div class="col-span-2 pt-2 text-[8px] break-all opacity-60">
+                                                SHA-256: 8a9d8f9a8d9f8a9d8f9a8d9f8a9d8f9a8d9f8a9d8f9a8d9f8a9d8f9a8d9f8a9d
+                                            </div>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-3 text-sm">
+<span class="text-slate-500 self-center mr-2">Additional formats:</span>
+<a class="flex items-center gap-1.5 text-slate-600 hover:text-primary transition-colors px-3 py-2 rounded bg-surface-light border border-slate-200" href="#">
+<span class="material-symbols-outlined text-[18px]">folder_zip</span>
+                                        Source Data (ZIP)
+                                    </a>
+<a class="flex items-center gap-1.5 text-slate-600 hover:text-primary transition-colors px-3 py-2 rounded bg-surface-light border border-slate-200" href="#">
+<span class="material-symbols-outlined text-[18px]">data_object</span>
+                                        Manifest (JSON)
+                                    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden opacity-20">
+<div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary rounded-full blur-[150px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[30%] h-[30%] bg-teal-200 rounded-full blur-[150px]"></div>
+</div>
+
+</body></html>

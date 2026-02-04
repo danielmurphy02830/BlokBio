@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delta | Sandboxed Testing Environment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ecb6",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#10221d",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #dbe6e3; border-radius: 10px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d4a43; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen transition-colors duration-200">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e2e8f0] dark:border-[#2d4a43] bg-white dark:bg-[#152b25] px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-[#111816] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight font-display">Delta (DiffBlok)</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-9 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border border-[#e2e8f0] dark:border-[#2d4a43]">
+<div class="text-[#61897f] flex bg-[#f0f4f3] dark:bg-[#1a332d] items-center justify-center pl-3">
+<span class="material-symbols-outlined text-sm">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#f0f4f3] dark:bg-[#1a332d] focus:ring-0 text-[#111816] dark:text-white h-full placeholder:text-[#61897f] px-3 text-sm font-normal" placeholder="Search resources..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#111816] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-[#111816] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Plugins</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary" href="#">Sandbox</a>
+<a class="text-[#111816] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Docs</a>
+</nav>
+<div class="h-6 w-px bg-[#e2e8f0] dark:bg-[#2d4a43]"></div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 border border-[#e2e8f0]" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD1L5hfQhTPNgvgTuSIUrPxcqdll8H7sVBeOapm78Ti1WrT95UO8O_fm7jMk71Axn0g3qaNZrHs4_lW25O2IntWZhze4TJ1W_DOw9an39bs3Bt6L1NBDpz_HNUefzZ8y2qKkHBo3WIpYvTLZ7CsK8GtElszevpzHDfoM7o26MpIK0igjpggQgfA4EOVTLQeHUdcl1Kkf0PzQI9Diac44q0HfuHabNLZDUwruBjXTQCzpCYsURvtt_cH6YhtPSuWQnlEoPtXdhbj0LN3");'></div>
+</div>
+</header>
+<main class="flex flex-col h-[calc(100-64px)] overflow-hidden">
+<!-- Sub-header with Breadcrumbs and Run Action -->
+<div class="px-6 py-4 flex flex-wrap justify-between items-center bg-white dark:bg-[#152b25] border-b border-[#e2e8f0] dark:border-[#2d4a43]">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-sm">
+<a class="text-[#61897f] hover:text-primary" href="#">Projects</a>
+<span class="text-[#61897f]">/</span>
+<a class="text-[#61897f] hover:text-primary" href="#">RNA-seq Pipeline</a>
+<span class="text-[#61897f]">/</span>
+<span class="text-[#111816] dark:text-white font-medium">Sandboxed Testing</span>
+</div>
+<h1 class="text-2xl font-black text-[#111816] dark:text-white tracking-tight font-display">Developer Sandbox <span class="text-xs font-normal text-[#61897f] ml-2 px-2 py-0.5 bg-[#f0f4f3] dark:bg-[#1a332d] rounded">v1.2.4-beta</span></h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 mr-4 text-xs font-medium text-[#61897f]">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+                    AWS Lambda: Connected
+                </div>
+<button class="flex items-center gap-2 h-10 px-4 bg-[#f0f4f3] dark:bg-[#1a332d] text-[#111816] dark:text-white rounded-lg text-sm font-bold hover:bg-[#e2e8f0] dark:hover:bg-[#25413a] transition-colors">
+<span class="material-symbols-outlined text-lg">settings</span>
+                    Config
+                </button>
+<button class="flex items-center gap-2 h-10 px-6 bg-primary text-[#10221d] rounded-lg text-sm font-bold hover:brightness-110 transition-all shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+                    Run Test Run
+                </button>
+</div>
+</div>
+<!-- Main Workspace Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar: Input Data Panel -->
+<aside class="w-72 bg-white dark:bg-[#152b25] border-r border-[#e2e8f0] dark:border-[#2d4a43] flex flex-col">
+<div class="p-4 border-b border-[#e2e8f0] dark:border-[#2d4a43]">
+<h3 class="text-sm font-bold text-[#111816] dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">database</span>
+                        Input Datasets
+                    </h3>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-4">
+<!-- Dataset Selection -->
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-[#61897f] uppercase tracking-wider">Synthetic Samples</p>
+<div class="p-3 rounded-lg border-2 border-primary bg-primary/5 cursor-pointer">
+<p class="text-sm font-bold text-[#111816] dark:text-white">Lung Adeno Control</p>
+<p class="text-xs text-[#61897f]">RNA-seq | 2.4GB | FASTQ</p>
+</div>
+<div class="p-3 rounded-lg border border-[#e2e8f0] dark:border-[#2d4a43] hover:border-[#cbd5e1] cursor-pointer bg-background-light/50 dark:bg-background-dark/30">
+<p class="text-sm font-bold text-[#111816] dark:text-white">Treated HepG2</p>
+<p class="text-xs text-[#61897f]">RNA-seq | 1.8GB | FASTQ</p>
+</div>
+<button class="w-full py-2 border-2 border-dashed border-[#e2e8f0] dark:border-[#2d4a43] rounded-lg text-xs font-bold text-[#61897f] hover:bg-[#f8fafc] dark:hover:bg-[#1a332d] transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                            Upload Custom
+                        </button>
+</div>
+<!-- Environment Parameters -->
+<div class="pt-4 space-y-4 border-t border-[#e2e8f0] dark:border-[#2d4a43]">
+<p class="text-[11px] font-bold text-[#61897f] uppercase tracking-wider">Simulation Params</p>
+<div class="space-y-3">
+<div>
+<label class="text-xs text-[#111816] dark:text-white font-medium block mb-1">Depth Simulation</label>
+<input class="w-full accent-primary h-1.5 bg-[#f0f4f3] dark:bg-[#1a332d] rounded-lg appearance-none cursor-pointer" type="range"/>
+<div class="flex justify-between text-[10px] text-[#61897f] mt-1">
+<span>10M Reads</span>
+<span>100M Reads</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-xs text-[#111816] dark:text-white">Include Mitochondrial</span>
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 size-3 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-xs text-[#111816] dark:text-white">Cache Intermediates</span>
+<div class="w-8 h-4 bg-[#dbe6e3] dark:bg-[#2d4a43] rounded-full relative">
+<div class="absolute left-0.5 top-0.5 size-3 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-[#f8fafc] dark:bg-[#112420] border-t border-[#e2e8f0] dark:border-[#2d4a43]">
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-[#1a332d] border border-[#e2e8f0] dark:border-[#2d4a43] rounded-lg text-xs font-bold text-[#111816] dark:text-white shadow-sm">
+<span class="material-symbols-outlined text-sm">terminal</span>
+                        Open Debug Shell
+                    </button>
+</div>
+</aside>
+<!-- Center: Execution & Logs Viewer -->
+<section class="flex-1 flex flex-col bg-[#10221d] border-r border-[#e2e8f0] dark:border-black overflow-hidden">
+<div class="flex border-b border-black bg-[#152b25] px-4 gap-6 shrink-0">
+<a class="flex items-center border-b-2 border-primary text-primary pb-2 pt-3 gap-2" href="#">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<p class="text-xs font-bold uppercase tracking-widest">Execution Logs</p>
+</a>
+<a class="flex items-center border-b-2 border-transparent text-[#61897f] pb-2 pt-3 gap-2 hover:text-white" href="#">
+<span class="material-symbols-outlined text-sm">code</span>
+<p class="text-xs font-bold uppercase tracking-widest">Lambda.py</p>
+</a>
+<a class="flex items-center border-b-2 border-transparent text-[#61897f] pb-2 pt-3 gap-2 hover:text-white" href="#">
+<span class="material-symbols-outlined text-sm">monitoring</span>
+<p class="text-xs font-bold uppercase tracking-widest">Metrics</p>
+</a>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-4 mono-font text-[13px] leading-relaxed">
+<div class="space-y-1">
+<div class="text-[#61897f]"><span class="text-[#13ecb6]/50">[2023-11-20 14:30:01]</span> <span class="text-primary font-bold">INFO:</span> Initializing Lambda Runtime Environment...</div>
+<div class="text-[#61897f]"><span class="text-[#13ecb6]/50">[2023-11-20 14:30:02]</span> <span class="text-primary font-bold">INFO:</span> Loading RNA-seq Plugin: <span class="text-white">'diffblok-volcano-v1'</span></div>
+<div class="text-[#61897f]"><span class="text-[#13ecb6]/50">[2023-11-20 14:30:03]</span> <span class="text-primary font-bold">INFO:</span> Fetching synthetic dataset 'Lung Adeno Control'</div>
+<div class="text-[#61897f]"><span class="text-[#13ecb6]/50">[2023-11-20 14:30:05]</span> <span class="text-primary font-bold">INFO:</span> Starting mapping phase (HISAT2)...</div>
+<div class="flex gap-4 items-center py-2">
+<div class="w-48 h-1.5 bg-[#1a332d] rounded-full overflow-hidden">
+<div class="w-[65%] h-full bg-primary shadow-[0_0_8px_rgba(19,236,182,0.4)]"></div>
+</div>
+<span class="text-[11px] text-primary">65% Processed</span>
+</div>
+<div class="text-[#61897f]"><span class="text-[#13ecb6]/50">[2023-11-20 14:30:12]</span> <span class="text-yellow-500 font-bold">WARN:</span> Low coverage detected in Sample ID: 9021</div>
+<div class="text-[#61897f]"><span class="text-[#13ecb6]/50">[2023-11-20 14:30:15]</span> <span class="text-primary font-bold">INFO:</span> Generating Differential Expression results...</div>
+<div class="text-white opacity-90 pl-4 border-l border-[#1a332d] mt-2">
+<span>{</span><br/>
+<span class="pl-4">"status": "success",</span><br/>
+<span class="pl-4">"genes_count": 18402,</span><br/>
+<span class="pl-4">"output_uri": "s3://delta-results/tmp/9021_preview.json"</span><br/>
+<span>}</span>
+</div>
+<div class="text-[#61897f] animate-pulse">_</div>
+</div>
+</div>
+<!-- Bottom Debug Console Input -->
+<div class="h-10 border-t border-black bg-[#152b25] flex items-center px-4 gap-3">
+<span class="material-symbols-outlined text-primary text-sm">chevron_right</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-white mono-font text-xs p-0" placeholder="Type a command to debug or inspect variables..." type="text"/>
+</div>
+</section>
+<!-- Right Panel: Results Preview -->
+<section class="w-[420px] bg-white dark:bg-[#152b25] flex flex-col">
+<div class="p-4 border-b border-[#e2e8f0] dark:border-[#2d4a43] flex justify-between items-center">
+<h3 class="text-sm font-bold text-[#111816] dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">visibility</span>
+                        Live Preview
+                    </h3>
+<div class="flex gap-1">
+<button class="size-8 flex items-center justify-center rounded-lg hover:bg-[#f0f4f3] dark:hover:bg-[#1a332d] text-[#61897f]">
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-lg hover:bg-[#f0f4f3] dark:hover:bg-[#1a332d] text-[#61897f]">
+<span class="material-symbols-outlined text-sm">refresh</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-6">
+<!-- Visualization Preview -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<p class="text-xs font-bold text-[#111816] dark:text-white">Differential Expression (Volcano Plot)</p>
+<span class="text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded">Plugin Output</span>
+</div>
+<div class="aspect-square w-full rounded-xl border border-[#e2e8f0] dark:border-[#2d4a43] bg-[#f8fafc] dark:bg-[#1a332d] flex flex-col items-center justify-center relative overflow-hidden group">
+<!-- Placeholder for a Volcano Plot -->
+<div class="absolute inset-4 flex items-end justify-between border-l border-b border-[#cbd5e1] dark:border-[#2d4a43]">
+<div class="w-full h-full relative p-4">
+<!-- Simple SVG representation of dots -->
+<svg class="w-full h-full text-primary" viewbox="0 0 100 100">
+<circle cx="20" cy="80" fill="#61897f" opacity="0.4" r="1.5"></circle>
+<circle cx="35" cy="75" fill="#61897f" opacity="0.4" r="1.5"></circle>
+<circle cx="50" cy="85" fill="#61897f" opacity="0.4" r="1.5"></circle>
+<circle cx="65" cy="70" fill="#61897f" opacity="0.4" r="1.5"></circle>
+<circle cx="10" cy="30" fill="currentColor" r="2"></circle>
+<circle cx="15" cy="20" fill="currentColor" r="2"></circle>
+<circle cx="85" cy="15" fill="currentColor" r="2"></circle>
+<circle cx="90" cy="25" fill="currentColor" r="2"></circle>
+<circle cx="55" cy="60" fill="#61897f" opacity="0.4" r="1.5"></circle>
+<circle cx="45" cy="65" fill="#61897f" opacity="0.4" r="1.5"></circle>
+</svg>
+</div>
+</div>
+<div class="absolute inset-0 bg-white/40 dark:bg-[#152b25]/40 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="px-4 py-2 bg-white dark:bg-[#1a332d] shadow-lg rounded-lg text-xs font-bold border border-[#e2e8f0] dark:border-[#2d4a43] text-[#111816] dark:text-white">Inspect Data Points</button>
+</div>
+<div class="mt-auto p-4 w-full">
+<div class="flex justify-between text-[10px] text-[#61897f] uppercase font-bold tracking-tighter">
+<span>Log2 Fold Change</span>
+<span>-Log10 P-value</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Table Preview -->
+<div class="space-y-3">
+<p class="text-xs font-bold text-[#111816] dark:text-white">Top Differentially Expressed Genes</p>
+<div class="rounded-lg border border-[#e2e8f0] dark:border-[#2d4a43] overflow-hidden">
+<table class="w-full text-left text-xs">
+<thead class="bg-[#f8fafc] dark:bg-[#1a332d] text-[#61897f] border-b border-[#e2e8f0] dark:border-[#2d4a43]">
+<tr>
+<th class="px-3 py-2 font-bold">Gene ID</th>
+<th class="px-3 py-2 font-bold">Log2FC</th>
+<th class="px-3 py-2 font-bold">P-val</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e2e8f0] dark:divide-[#2d4a43]">
+<tr class="text-[#111816] dark:text-white">
+<td class="px-3 py-2 mono-font">ENSG0001</td>
+<td class="px-3 py-2 text-primary font-bold">+4.52</td>
+<td class="px-3 py-2">1.2e-9</td>
+</tr>
+<tr class="text-[#111816] dark:text-white">
+<td class="px-3 py-2 mono-font">ENSG0024</td>
+<td class="px-3 py-2 text-primary font-bold">+3.81</td>
+<td class="px-3 py-2">5.4e-8</td>
+</tr>
+<tr class="text-[#111816] dark:text-white">
+<td class="px-3 py-2 mono-font">ENSG0089</td>
+<td class="px-3 py-2 text-red-400 font-bold">-2.11</td>
+<td class="px-3 py-2">2.1e-6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Integration Health -->
+<div class="p-4 rounded-xl bg-primary/5 border border-primary/20 space-y-3">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-xs font-bold">Plugin Compatibility Check</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px]">
+<span class="text-[#61897f]">Schema Validation</span>
+<span class="text-[#111816] dark:text-white font-medium">Passed</span>
+</div>
+<div class="flex justify-between text-[11px]">
+<span class="text-[#61897f]">Memory Footprint</span>
+<span class="text-[#111816] dark:text-white font-medium">124MB / 512MB</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Global Footer / Keyboard Shortcuts -->
+<footer class="h-8 bg-white dark:bg-[#152b25] border-t border-[#e2e8f0] dark:border-[#2d4a43] px-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-[10px] text-[#61897f] font-medium">
+<kbd class="px-1.5 py-0.5 rounded border border-[#e2e8f0] dark:border-[#2d4a43] bg-background-light dark:bg-background-dark">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 rounded border border-[#e2e8f0] dark:border-[#2d4a43] bg-background-light dark:bg-background-dark">Enter</kbd>
+<span>Run Test</span>
+</div>
+<div class="flex items-center gap-1.5 text-[10px] text-[#61897f] font-medium">
+<kbd class="px-1.5 py-0.5 rounded border border-[#e2e8f0] dark:border-[#2d4a43] bg-background-light dark:bg-background-dark">Esc</kbd>
+<span>Clear Logs</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-[10px] text-[#61897f]">
+<span class="flex items-center gap-1">
+<span class="size-1.5 rounded-full bg-primary"></span>
+                API v2.4 (Latest)
+            </span>
+<span class="flex items-center gap-1">
+                Region: us-east-1
+            </span>
+</div>
+</footer>
+</body></html>

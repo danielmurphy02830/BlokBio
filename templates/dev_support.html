@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delta | Developer Support &amp; Ticketing Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ecb6",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#10221d",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111816] dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111816] dark:text-primary">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+</div>
+<h2 class="text-[#111816] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] font-display">Delta Support</h2>
+</div>
+<label class="flex flex-col min-w-64 !h-10 max-w-md">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#61897f] flex border-none bg-gray-100 dark:bg-gray-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-primary">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111816] dark:text-white focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-gray-800 focus:border-none h-full placeholder:text-[#61897f] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search Knowledge Base..."/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-[#111816] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-[#111816] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">API Reference</a>
+<a class="text-[#111816] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Community</a>
+</div>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-100 dark:bg-gray-800 text-[#111816] dark:text-white px-3 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="Developer profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnJJ4-_6c3Jwnkr7AQ2c1kf8zU6rti2hU13zrNS1yfwL-UQI43utOdvt1alfMiOOOzGx17WliQItX0ui4ov0BOP1a_16NxP5U86pBG2ysCr3SjWHKmrSOBiz-gVBS6jq9ntAevu1w0zTBQ0p4LBV3mvRBG2sbF20jx2YXq4aEEsExBj23AlRGnp299KPspPrpokP7zxTcRqyy7pXfbbMfu4Or-EofZbtyodZHwh9NSTvn9HzQu_Pz0rt_M9CRq_tm0BfsZmF5va_t8");'></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center">
+<div class="w-full max-w-[1280px] px-6 lg:px-10 py-10 flex flex-col lg:flex-row gap-10">
+<!-- Main Content: Ticket Form -->
+<div class="flex-1 flex flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-col gap-3">
+<h1 class="text-[#111816] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] font-display">Open a Technical Support Case</h1>
+<p class="text-[#61897f] dark:text-gray-400 text-lg font-normal leading-normal">
+                            Transition your genomic data from raw files to biological insights with our developer support. 
+                            Our team typically responds within 4 hours.
+                        </p>
+</div>
+<!-- Form Section -->
+<div class="bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-800 rounded-xl p-8 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<!-- Category Field -->
+<label class="flex flex-col gap-2">
+<span class="text-[#111816] dark:text-gray-200 text-base font-medium font-display">Category</span>
+<div class="relative">
+<select class="form-input flex w-full rounded-lg text-[#111816] dark:text-white border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-primary h-14 px-4 appearance-none">
+<option value="api">API Bug / Integration</option>
+<option value="lambda">AWS Lambda Execution</option>
+<option value="doc">Documentation Clarification</option>
+<option value="feature">Feature Request</option>
+<option value="billing">Billing &amp; Quotas</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-[#61897f]">expand_more</span>
+</div>
+</div>
+</label>
+<!-- Priority Field -->
+<div class="flex flex-col gap-2">
+<span class="text-[#111816] dark:text-gray-200 text-base font-medium font-display">Priority Level</span>
+<div class="flex h-14 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111816] dark:has-[:checked]:text-primary text-[#61897f] text-sm font-bold uppercase tracking-wider">
+<span class="truncate">Low</span>
+<input class="hidden" name="priority" type="radio" value="Low"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111816] dark:has-[:checked]:text-primary text-[#61897f] text-sm font-bold uppercase tracking-wider">
+<span class="truncate">Med</span>
+<input checked="" class="hidden" name="priority" type="radio" value="Medium"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111816] dark:has-[:checked]:text-primary text-[#61897f] text-sm font-bold uppercase tracking-wider">
+<span class="truncate">High</span>
+<input class="hidden" name="priority" type="radio" value="High"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-red-500 dark:has-[:checked]:text-red-400 text-[#61897f] text-sm font-bold uppercase tracking-wider">
+<span class="truncate">Urgent</span>
+<input class="hidden" name="priority" type="radio" value="Urgent"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Description Field -->
+<div class="flex flex-col gap-2 mb-6">
+<span class="text-[#111816] dark:text-gray-200 text-base font-medium font-display">Issue Description</span>
+<textarea class="form-input flex w-full resize-none rounded-lg text-[#111816] dark:text-white border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-primary min-h-[180px] p-4 text-base font-normal leading-normal font-mono" placeholder="Describe the issue. Include genomic data snippets, AWS Lambda request IDs, or terminal output if applicable."></textarea>
+</div>
+<!-- File Upload -->
+<div class="flex flex-col gap-2 mb-8">
+<span class="text-[#111816] dark:text-gray-200 text-base font-medium font-display">Attachments (Logs, JSON, FASTQ snippet)</span>
+<div class="border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-xl p-10 flex flex-col items-center justify-center gap-3 bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-[#61897f] group-hover:text-primary">upload_file</span>
+<div class="text-center">
+<p class="text-sm font-medium text-[#111816] dark:text-gray-300">Click to upload or drag and drop</p>
+<p class="text-xs text-[#61897f]">Maximum file size 50MB (log, txt, json, csv)</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end gap-4">
+<button class="px-6 py-3 rounded-lg font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Cancel</button>
+<button class="bg-primary text-background-dark px-10 py-3 rounded-lg font-bold text-base shadow-lg shadow-primary/20 hover:brightness-105 active:scale-[0.98] transition-all">Submit Ticket</button>
+</div>
+</div>
+</div>
+<!-- Sidebar: Recent Tickets -->
+<aside class="w-full lg:w-[320px] flex flex-col gap-6">
+<div class="bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold font-display">Recent Activity</h3>
+<a class="text-xs font-bold text-primary uppercase tracking-wider hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Ticket Card 1 -->
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-transparent hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-mono text-primary">#DT-9821</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">In Progress</span>
+</div>
+<h4 class="text-sm font-bold mb-1 truncate">Lambda Timeout on 4GB FASTQ</h4>
+<p class="text-xs text-[#61897f]">Updated 2h ago</p>
+</div>
+<!-- Ticket Card 2 -->
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-transparent hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-mono text-primary">#DT-9754</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-primary/20 text-primary dark:text-primary">Resolved</span>
+</div>
+<h4 class="text-sm font-bold mb-1 truncate">API Auth Header Refresh</h4>
+<p class="text-xs text-[#61897f]">Updated 1d ago</p>
+</div>
+<!-- Ticket Card 3 -->
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-transparent hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-mono text-primary">#DT-9610</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-400">Awaiting Reply</span>
+</div>
+<h4 class="text-sm font-bold mb-1 truncate">AI Interpretation Discrepancy</h4>
+<p class="text-xs text-[#61897f]">Updated 3d ago</p>
+</div>
+</div>
+<!-- Need Help Prompt -->
+<div class="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800 text-center">
+<p class="text-sm text-[#61897f] mb-4 italic">"Solving genomic complexity one line of code at a time."</p>
+<div class="flex items-center justify-center gap-2 text-primary font-bold text-sm">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+<span>AI Help Assistant</span>
+</div>
+</div>
+</div>
+<!-- Quick Links Card -->
+<div class="bg-primary/10 dark:bg-primary/5 rounded-xl p-6 border border-primary/20">
+<h3 class="text-[#111816] dark:text-white font-bold mb-4 font-display">Developer Shortcuts</h3>
+<ul class="flex flex-col gap-3">
+<li>
+<a class="flex items-center gap-3 text-sm text-[#111816] dark:text-gray-300 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-primary text-lg">description</span>
+                                    Bulk Upload Guide
+                                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-sm text-[#111816] dark:text-gray-300 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-primary text-lg">code</span>
+                                    Webhook Integration
+                                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-sm text-[#111816] dark:text-gray-300 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-primary text-lg">terminal</span>
+                                    CLI Documentation
+                                </a>
+</li>
+</ul>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-gray-200 dark:border-gray-800 py-6 px-10 bg-white dark:bg-background-dark">
+<div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-[#61897f]">© 2024 Delta (DiffBlok) Cloud. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-xs text-[#61897f] hover:text-primary transition-colors" href="#">System Status</a>
+<a class="text-xs text-[#61897f] hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-[#61897f] hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

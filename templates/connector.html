@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Connector Studio: Event Mapping</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ecb6",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#10221d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .canvas-grid {
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .canvas-grid {
+            background-image: radial-gradient(#2d3748 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111816] dark:text-white font-display">
+<div class="flex flex-col h-screen">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e7eb] dark:border-[#1e2f2b] bg-white dark:bg-background-dark px-6 py-3 shrink-0">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111816] dark:text-primary">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined">account_tree</span>
+</div>
+<h2 class="text-[#111816] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Delta Connector Studio</h2>
+</div>
+<div class="flex flex-wrap gap-2 items-center">
+<a class="text-[#61897f] text-sm font-medium hover:text-primary transition-colors" href="#">Automations</a>
+<span class="text-[#61897f] text-sm font-medium">/</span>
+<span class="text-[#111816] dark:text-white text-sm font-semibold">Event Mapping</span>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="hidden md:flex items-center gap-6 mr-4">
+<a class="text-[#111816] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary" href="#">Workflows</a>
+<a class="text-[#111816] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary" href="#">Pipelines</a>
+<a class="text-[#111816] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary" href="#">Logs</a>
+</div>
+<div class="flex gap-2">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-[#f0f4f3] dark:bg-gray-800 text-[#111816] dark:text-white text-sm font-bold">
+<span>Test Run</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-[#111816] text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
+<span>Save Workflow</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-gray-200" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjvGB8BQyYkQBRIw44gZdD3L0oqxt8miVXlACT30TePw4s_lWxvicM_LwHlHSCZu5QuEtBOU_SBHaOgJ2UrjVZU53qVjmzzXWwH1BQAAHuVhycbGmGsrwulLzfsPCQ9Q8HflXCuvQjiReNWQPQ1YQDNhRYbricfWus3bS2sMEAT2C_4AcwWrWZDjMqwDvlUOcni4FTbMjgWWynaI0yCioGnoVsnIw5Bk0CDAcuwU5rpbnMGjCqJNLnlwbBzmeoDVmUeYq3AJ1eyJrB");'></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar: Triggers -->
+<aside class="w-64 border-r border-[#e5e7eb] dark:border-[#1e2f2b] bg-white dark:bg-background-dark flex flex-col shrink-0">
+<div class="p-4 flex flex-col gap-4 overflow-y-auto h-full">
+<div>
+<h1 class="text-[#111816] dark:text-white text-base font-bold leading-normal">Triggers Library</h1>
+<p class="text-[#61897f] text-xs font-normal leading-normal">Drag to mapping canvas</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 border border-primary/30 cursor-grab hover:bg-primary/20 transition-colors group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">report_problem</span>
+<div>
+<p class="text-[#111816] dark:text-white text-sm font-semibold">QC Fail</p>
+<p class="text-[#61897f] text-[10px]">Phred score &lt; 30</p>
+</div>
+</div>
+<div class="flex items-center gap-3 px-3 py-3 rounded-lg border border-[#e5e7eb] dark:border-gray-800 cursor-grab hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<span class="material-symbols-outlined text-[#61897f] group-hover:text-primary">check_circle</span>
+<div>
+<p class="text-[#111816] dark:text-white text-sm font-medium">Analysis Done</p>
+<p class="text-[#61897f] text-[10px]">Pipeline complete</p>
+</div>
+</div>
+<div class="flex items-center gap-3 px-3 py-3 rounded-lg border border-[#e5e7eb] dark:border-gray-800 cursor-grab hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<span class="material-symbols-outlined text-[#61897f] group-hover:text-primary">description</span>
+<div>
+<p class="text-[#111816] dark:text-white text-sm font-medium">Report Created</p>
+<p class="text-[#61897f] text-[10px]">PDF Summary ready</p>
+</div>
+</div>
+<div class="flex items-center gap-3 px-3 py-3 rounded-lg border border-[#e5e7eb] dark:border-gray-800 cursor-grab hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<span class="material-symbols-outlined text-[#61897f] group-hover:text-primary">biotech</span>
+<div>
+<p class="text-[#111816] dark:text-white text-sm font-medium">Bio Insight</p>
+<p class="text-[#61897f] text-[10px]">AI detected variation</p>
+</div>
+</div>
+</div>
+<div class="mt-4">
+<h1 class="text-[#111816] dark:text-white text-xs font-bold uppercase tracking-wider mb-2">Actions</h1>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-3 py-3 rounded-lg border border-[#e5e7eb] dark:border-gray-800 cursor-grab hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<span class="material-symbols-outlined text-[#61897f] group-hover:text-primary">chat</span>
+<p class="text-[#111816] dark:text-white text-sm font-medium">Slack Message</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-3 rounded-lg border border-[#e5e7eb] dark:border-gray-800 cursor-grab hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<span class="material-symbols-outlined text-[#61897f] group-hover:text-primary">webhook</span>
+<p class="text-[#111816] dark:text-white text-sm font-medium">Log to LIMS</p>
+</div>
+</div>
+</div>
+<button class="mt-auto flex w-full cursor-pointer items-center justify-center rounded-lg h-10 border-2 border-dashed border-[#e5e7eb] dark:border-gray-800 text-[#61897f] text-sm font-bold hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm mr-2">add_circle</span>
+<span class="truncate">Custom Event</span>
+</button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 bg-background-light dark:bg-[#0c1a16] relative canvas-grid overflow-hidden">
+<div class="absolute top-6 left-6 flex flex-col gap-1">
+<h2 class="text-[#111816] dark:text-white text-xl font-bold tracking-tight">Workflow Canvas</h2>
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[#61897f] text-xs font-medium uppercase tracking-widest">Live Editor</span>
+</div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative w-full h-full flex items-center justify-center pointer-events-none">
+<!-- Connector Line -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" style="filter: drop-shadow(0 0 8px rgba(19, 236, 182, 0.4));">
+<path d="M 380 300 C 500 300, 500 300, 620 300" fill="transparent" stroke="#13ecb6" stroke-width="3"></path>
+<circle cx="380" cy="300" fill="#13ecb6" r="4"></circle>
+<circle cx="620" cy="300" fill="#13ecb6" r="4"></circle>
+</svg>
+<!-- Trigger Card (Canvas Node) -->
+<div class="absolute transform -translate-x-1/2 left-[35%] pointer-events-auto">
+<div class="w-64 rounded-xl bg-white dark:bg-background-dark p-5 shadow-xl border-2 border-primary ring-4 ring-primary/5">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-primary text-[10px] font-bold tracking-[0.1em] uppercase">Trigger</span>
+<span class="material-symbols-outlined text-primary text-sm">sensors</span>
+</div>
+<div>
+<p class="text-[#111816] dark:text-white text-lg font-bold">QC Fail</p>
+<p class="text-[#61897f] text-xs mt-1 leading-relaxed">Triggered when Phred quality score drops below 30 in any lane.</p>
+</div>
+<div class="h-[1px] bg-gray-100 dark:bg-gray-800 w-full my-1"></div>
+<button class="flex items-center justify-center gap-2 rounded-lg bg-[#f0f4f3] dark:bg-gray-800 text-[#111816] dark:text-white py-2 text-xs font-semibold hover:bg-gray-100 transition-colors">
+<span class="material-symbols-outlined text-sm">settings</span>
+                                        Configure Condition
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Action Card (Canvas Node) -->
+<div class="absolute transform translate-x-1/2 right-[35%] pointer-events-auto">
+<div class="w-64 rounded-xl bg-white dark:bg-background-dark p-5 shadow-xl border border-gray-100 dark:border-gray-800 hover:border-primary transition-colors cursor-pointer ring-4 ring-primary/5">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-[#61897f] text-[10px] font-bold tracking-[0.1em] uppercase">Action</span>
+<span class="material-symbols-outlined text-[#61897f] text-sm">bolt</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 bg-[#4A154B] rounded flex items-center justify-center text-white" data-alt="Slack Logo icon placeholder">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<p class="text-[#111816] dark:text-white text-base font-bold leading-tight">Slack Alert</p>
+<p class="text-[#61897f] text-xs mt-0.5">#genomic-alerts</p>
+</div>
+</div>
+<p class="text-[#61897f] text-xs leading-relaxed">Notify laboratory staff immediately via the main bio-ops channel.</p>
+<div class="h-[1px] bg-gray-100 dark:bg-gray-800 w-full my-1"></div>
+<div class="flex gap-2">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg bg-primary/10 text-primary py-2 text-xs font-bold border border-primary/20">
+                                            Edit Mapping
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Canvas Controls -->
+<div class="absolute bottom-6 left-6 flex gap-2 bg-white dark:bg-background-dark border border-[#e5e7eb] dark:border-gray-800 rounded-lg p-1 shadow-md">
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded text-[#61897f]"><span class="material-symbols-outlined">add</span></button>
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded text-[#61897f]"><span class="material-symbols-outlined">remove</span></button>
+<div class="w-[1px] bg-gray-100 dark:bg-gray-800 self-stretch my-1"></div>
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded text-[#61897f]"><span class="material-symbols-outlined">center_focus_strong</span></button>
+</div>
+</main>
+<!-- Right Sidebar: Configuration Panel -->
+<aside class="w-80 border-l border-[#e5e7eb] dark:border-[#1e2f2b] bg-white dark:bg-background-dark flex flex-col shrink-0 overflow-y-auto">
+<div class="p-6">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-[#111816] dark:text-white text-base font-bold">Node Settings</h2>
+<button class="text-[#61897f] hover:text-[#111816]"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="flex items-center gap-3 p-3 bg-[#f6f8f8] dark:bg-gray-900 rounded-lg mb-6">
+<div class="size-10 bg-[#4A154B] rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<p class="text-[#111816] dark:text-white text-sm font-bold leading-tight">Slack Notification</p>
+<p class="text-[#61897f] text-xs">v2.1.0 • Connected</p>
+</div>
+</div>
+<div class="flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="text-[#111816] dark:text-gray-300 text-xs font-bold uppercase tracking-wider">Destination Channel</label>
+<select class="form-select w-full rounded-lg border-[#e5e7eb] dark:border-gray-800 bg-transparent text-sm text-[#111816] dark:text-white focus:ring-primary focus:border-primary">
+<option>#genomic-alerts</option>
+<option>#qc-monitoring</option>
+<option>#general-lab</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[#111816] dark:text-gray-300 text-xs font-bold uppercase tracking-wider">Message Template</label>
+<textarea class="form-textarea w-full rounded-lg border-[#e5e7eb] dark:border-gray-800 bg-transparent text-sm text-[#111816] dark:text-white focus:ring-primary focus:border-primary placeholder:text-gray-400" placeholder="Hello team, QC Fail detected for run {{run_id}}..." rows="4"></textarea>
+<div class="flex flex-wrap gap-1 mt-1">
+<span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-[10px] rounded text-[#61897f] font-mono cursor-pointer hover:bg-gray-200">run_id</span>
+<span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-[10px] rounded text-[#61897f] font-mono cursor-pointer hover:bg-gray-200">phred_avg</span>
+<span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-[10px] rounded text-[#61897f] font-mono cursor-pointer hover:bg-gray-200">flowcell_id</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[#111816] dark:text-gray-300 text-xs font-bold uppercase tracking-wider">Retry Policy</label>
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1 px-3 py-2 rounded border border-[#e5e7eb] dark:border-gray-800 text-center cursor-pointer hover:bg-primary/10 hover:border-primary transition-colors">
+<p class="text-xs font-medium">Once</p>
+</div>
+<div class="flex-1 px-3 py-2 rounded border-2 border-primary bg-primary/5 text-center cursor-pointer">
+<p class="text-xs font-bold text-primary">Linear</p>
+</div>
+<div class="flex-1 px-3 py-2 rounded border border-[#e5e7eb] dark:border-gray-800 text-center cursor-pointer hover:bg-primary/10 hover:border-primary transition-colors">
+<p class="text-xs font-medium">Exp.</p>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-[#e5e7eb] dark:border-gray-800 mt-2">
+<div class="flex items-center justify-between mb-4">
+<div>
+<p class="text-sm font-bold">Conditional Logic</p>
+<p class="text-[10px] text-[#61897f]">Only fire if criteria met</p>
+</div>
+<div class="w-10 h-5 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 size-3 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="p-3 bg-[#f0f4f3] dark:bg-gray-900 rounded-lg flex items-center justify-between">
+<p class="text-[11px] font-mono text-primary font-bold">severity == 'critical'</p>
+<span class="material-symbols-outlined text-xs text-primary">edit</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto p-6 bg-gray-50 dark:bg-[#0c1a16] border-t border-[#e5e7eb] dark:border-gray-800">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg bg-background-dark text-white dark:bg-primary dark:text-background-dark py-3 text-sm font-bold hover:opacity-90 transition-opacity shadow-lg">
+                        Apply Changes
+                    </button>
+</div>
+</aside>
+</div>
+</div>
+</body></html>

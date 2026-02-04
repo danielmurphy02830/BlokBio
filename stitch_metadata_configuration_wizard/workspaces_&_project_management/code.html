@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delta - Workspaces &amp; Project Management</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0d9488", // Teal green
+              "background-light": "#ffffff", // Clean white
+              "background-dark": "#101922",
+              "surface-dark": "#1f2937",
+              "surface-light": "#ffffff", // White surface for clean look
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900">
+<div class="relative flex h-screen w-full overflow-hidden">
+<div class="flex w-64 flex-col border-r border-slate-200 bg-surface-light transition-all duration-300">
+<div class="flex flex-col h-full p-4">
+<div class="flex items-center gap-3 mb-8 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shadow-lg border border-slate-200" data-alt="Abstract geometric logo in blue and dark grey" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2Cmuohmf_gDWOh4auGEuDfZEFKAdrZNs6VmcN-IerEvr0WM_gys9sobj4mYZCRzGpjBmnBnpMQwfD3QmXB8SRBusOl_uLwa-rvY_C6VKZiff3cZcPpTuNnA9Bqn89MObcXIRotWya0biCdFK7X2DGnOoy3yL4cLubgiuDEw3798kwVUzOg2dXlDs_cqaj7-XHr7yTOwMfk7EOxolvtmzqMQEmhB7yQ96DkgGR-jUbGLyaqqaMarCEeuEahPy8GyBuOztzlPaLew5H");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 text-lg font-bold leading-tight">Delta</h1>
+<p class="text-slate-500 text-xs font-normal">DiffBlok Engine</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+<p class="text-sm font-medium">Workspaces</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">folder_open</span>
+<p class="text-sm font-medium">Projects</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">dataset</span>
+<p class="text-sm font-medium">Data Lake</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">mediation</span>
+<p class="text-sm font-medium">Pipelines</p>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-200">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 mt-2 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors cursor-pointer">
+<div class="size-8 rounded-full bg-slate-200 overflow-hidden" data-alt="User avatar profile picture">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1yJ27ciaqXPR6qaEQSvW_CfuYfZYhy_odFOQbVCarKbNpJZblusa75Kdao29fZiNbJ2bgKSY4tiaTfISOPPF6i4swZ_jvLnlSHveppveAOmBKzmTSI_Cx6KaxyT8j1bntBBAR7IpdkVcwEyLdbbZRtpVfx-BV1j8oNh3AulHYuiXSVMur8VgrdZETJCT1n4ru5GePyIAgp1f9PY_C790vGmW69dqQT-2C6q4NZwEtxpok25HAaFI7BrDeZiUQk7FEkOzghCC1D7SF"/>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-slate-900">Dr. Sarah L.</p>
+<p class="text-xs text-slate-500">Lead Analyst</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col flex-1 h-full overflow-hidden bg-background-light relative">
+<header class="flex-none px-8 py-6 border-b border-slate-200 bg-surface-light">
+<div class="max-w-[1400px] mx-auto w-full">
+<div class="flex items-center gap-2 mb-4 text-sm">
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Workspaces</a>
+<span class="text-slate-300">/</span>
+<span class="text-slate-900 font-medium">Oncology Research Dept</span>
+</div>
+<div class="flex flex-wrap items-end justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Oncology Research Dept</h1>
+<p class="text-slate-500 max-w-2xl">Manage your team's research projects, compute resources, and access controls for the upcoming Q3 trials.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-teal-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>New Project</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-8 py-8 scrollbar-hide">
+<div class="max-w-[1400px] mx-auto flex flex-col gap-8">
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-light border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-primary">memory</span>
+<span class="text-sm font-medium">Compute Quota</span>
+</div>
+<span class="bg-green-500/10 text-green-600 text-xs font-bold px-2 py-1 rounded">+12% vs last month</span>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<span class="text-3xl font-bold text-slate-900">850 <span class="text-lg text-slate-400 font-normal">/ 1000 Hours</span></span>
+<span class="text-xs text-slate-500">AWS Lambda Compute</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-2 mb-2">
+<div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+</div>
+<p class="text-xs text-slate-400 text-right">Resets in 4 days</p>
+</div>
+<div class="bg-surface-light border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-purple-500">database</span>
+<span class="text-sm font-medium">S3 Storage</span>
+</div>
+<span class="bg-slate-100 text-slate-500 text-xs font-bold px-2 py-1 rounded">Normal</span>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<span class="text-3xl font-bold text-slate-900">12.4 <span class="text-lg text-slate-400 font-normal">/ 50 TB</span></span>
+<span class="text-xs text-slate-500">Encrypted Buckets</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-2 mb-2">
+<div class="bg-purple-500 h-2 rounded-full" style="width: 24%"></div>
+</div>
+<p class="text-xs text-slate-400 text-right">37.6 TB Available</p>
+</div>
+<div class="bg-surface-light border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Team Access</span>
+</div>
+<button class="text-primary text-xs font-bold hover:underline">Manage</button>
+</div>
+<div class="flex -space-x-3 mb-4">
+<img alt="Team member Sarah" class="w-10 h-10 rounded-full border-2 border-white" data-alt="Portrait of a female researcher" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7ivogiTRNcq7yFF1iJlGkDcn5kUOGjZMCLuj0ix1dl7vbvaoPvXVF-DSmaAeulM_jkpV0sPsPXrEbLprr58oof9Kib9Czn4bhhVGOGROFfey4H1tSrgabWCHsotjWk33XSZqFnVTAQidLwksvFg7c_t0Gz-dAkcTPeicdsk0MzLQl1beULTwH_Y6vQN2gHDBQOXaNlfre5eIz6nUfUlgY8TJQcYwcTuY4keoI5JBTojMV0-m1RLDJzsIb3iDnZe9WkAQqAsJ30q3i"/>
+<img alt="Team member John" class="w-10 h-10 rounded-full border-2 border-white" data-alt="Portrait of a male researcher" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmGJyEAZ-IeTon8RCkaLIlFTbToNVo8ysh-Pgo1RrCMyptJ0_QZ2K3Amf91iIPJepbVu_8-nTlTggyuGzYgZeCRUUJ_PVYslqzNPRZXl8VRhO2l6QxCgazHf5SOqiKC5Ym2dHK7u2FnkcLvHWMN09tsLNzwmJaogyqLX9Ae0ZYd6knEz7aV49ex78uGJgt6d5QTN4myXslTBMQ2NVOcVLWCpgV4IyjsCdEpD0hmrqCrXvaC0iAGlFNKtaYwe5AWKkACz37EsYlv8Rw"/>
+<img alt="Team member Alex" class="w-10 h-10 rounded-full border-2 border-white" data-alt="Portrait of a male researcher" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfTt76XNeB0ynMloIENNA-HvHxz9PTnBKNaxQYOW4pn_CI65hnoT6qvqIBXGeWl3_w279DyxRjdS9WfbO4_IRfZn7s59LDNnSznTzKnDr07wVSRdlcStLdRw-1whAnvSv0nJjiQZShid12DnKTxB1c_xSgJK114p-1U92GH9xZCRbfI04CFQjA8Ql7SqWRgH6TNDOyE9mB2biRBBarcTqQcFtEKG9gBss1VZrN7fsTDMCMirZhtiWpoaH-bnpktBx69wWEV0hhRpzx"/>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs font-medium text-slate-600">+2</div>
+</div>
+<div class="mt-auto">
+<div class="flex items-center justify-between text-sm py-2 border-t border-slate-100">
+<span class="text-slate-500">Active Sessions</span>
+<span class="text-slate-900 font-medium">3 Users</span>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<div class="xl:col-span-2 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-slate-900">Research Projects</h2>
+<div class="flex gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-slate-400 text-[20px]">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-light border border-slate-200 rounded-lg text-sm text-slate-900 focus:ring-1 focus:ring-primary focus:border-primary outline-none placeholder-slate-400 w-48 transition-all" placeholder="Search projects..." type="text"/>
+</div>
+<button class="p-1.5 bg-surface-light border border-slate-200 rounded-lg text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-light border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 border-b border-slate-200">
+<th class="py-3 px-6 text-xs font-medium uppercase tracking-wider text-slate-500">Project Name</th>
+<th class="py-3 px-6 text-xs font-medium uppercase tracking-wider text-slate-500">Status</th>
+<th class="py-3 px-6 text-xs font-medium uppercase tracking-wider text-slate-500">Owner</th>
+<th class="py-3 px-6 text-xs font-medium uppercase tracking-wider text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200">
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">RNA-Seq Colon Cancer V2</span>
+<span class="text-xs text-slate-500">ID: #DLT-8821</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-teal-500"></span>
+</span>
+<span class="text-sm text-slate-700">Processing</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-teal-50 flex items-center justify-center text-[10px] font-bold text-teal-700">SC</div>
+<span class="text-sm text-slate-600">Dr. S. Chen</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">Melanoma Drug Response</span>
+<span class="text-xs text-slate-500">ID: #DLT-9002</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="h-2.5 w-2.5 rounded-full bg-amber-500"></span>
+<span class="text-sm text-slate-700">Pending Review</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-purple-100 flex items-center justify-center text-[10px] font-bold text-purple-600">JD</div>
+<span class="text-sm text-slate-600">J. Doe</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">Lymphoma Study Phase 1</span>
+<span class="text-xs text-slate-500">ID: #DLT-7110</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+<span class="text-sm text-slate-700">Complete</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-emerald-100 flex items-center justify-center text-[10px] font-bold text-emerald-600">AL</div>
+<span class="text-sm text-slate-600">A. Lee</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">Glioblastoma Trial 03</span>
+<span class="text-xs text-slate-500">ID: #DLT-3229</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="h-2.5 w-2.5 rounded-full bg-slate-400"></span>
+<span class="text-sm text-slate-700">Archived</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-orange-100 flex items-center justify-center text-[10px] font-bold text-orange-600">MK</div>
+<span class="text-sm text-slate-600">M. Kim</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-4 border-t border-slate-200 flex justify-center">
+<button class="text-sm text-primary font-medium hover:underline">View All Projects</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4">
+<h2 class="text-xl font-bold text-slate-900">Approval Queue</h2>
+<div class="bg-surface-light border border-slate-200 rounded-xl p-5 shadow-sm">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-3 pb-4 border-b border-slate-100 last:border-0 last:pb-0">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="mt-1 size-8 rounded-lg bg-teal-500/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-900">Glioblastoma_Trial_03</p>
+<p class="text-xs text-slate-500">Ready for publication</p>
+</div>
+</div>
+<span class="text-[10px] font-medium text-slate-400 uppercase">2h ago</span>
+</div>
+<div class="flex gap-2 pl-11">
+<button class="flex-1 px-3 py-1.5 bg-primary hover:bg-teal-700 text-white text-xs font-bold rounded transition-colors">Approve</button>
+<button class="px-3 py-1.5 border border-slate-200 text-slate-600 hover:bg-slate-100 text-xs font-bold rounded transition-colors">Review</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-4 border-b border-slate-100 last:border-0 last:pb-0">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="mt-1 size-8 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-900">Outlier Detection Alert</p>
+<p class="text-xs text-slate-500">Dataset #8821 flagged</p>
+</div>
+</div>
+<span class="text-[10px] font-medium text-slate-400 uppercase">1d ago</span>
+</div>
+<div class="flex gap-2 pl-11">
+<button class="flex-1 px-3 py-1.5 bg-surface-light hover:bg-slate-50 text-slate-900 text-xs font-bold rounded transition-colors border border-slate-200">View Report</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-slate-900">Department Access</h2>
+<button class="text-primary hover:bg-primary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">person_add</span>
+</button>
+</div>
+<div class="bg-surface-light border border-slate-200 rounded-xl p-1 shadow-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer group">
+<div class="relative">
+<img alt="Sarah L." class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of Sarah L." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrbaF3vZHwGKJianvKPszHgOoF9Oo1YCrNLJKj8CLARJNYx3WNbdlxI3WHm_oIASZVIkDcgVfARRN_K8wrmIbK1TtGUdpO7tfBkwDkW_GaUYffN_Jp2Tc3KPVN6Ogi5_28ft0jnH3zRWlL4-5x4TlYCI30aLWsSkSj7Mmk4C4qygcRT8qX5Ct6zU3_VrrJwOj1GVahcjPUI1lapXICYsornrU3PYDKmfZ7Ci4289Eh-wQB6qrI4OXWV2N3hnywbzQPy2smp2MgG-M2"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-900">Dr. Sarah L.</p>
+<p class="text-xs text-slate-500">Lead Researcher</p>
+</div>
+<span class="px-2 py-1 rounded bg-amber-500/10 text-amber-600 text-[10px] font-bold border border-amber-500/20">Admin</span>
+</div>
+<div class="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer group">
+<div class="relative">
+<img alt="Alex M." class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of Alex M." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8pT9tlBHDPMLWI_opU1_NExDpRLLQsyeTuMFFENHuyDadWw1j4Rf3QIVSnvxstX0hHsIe98qpaolUC5l0mJzSrGtZi8vWg-1-uzs6Ug2ixrzXYezODN9-HmIOdocCImInaeJFdFwJWfvbUgVHNCkTCBmW0N2y8l_gDMg_nQunL6ZtJliWvZToK398ERewbagdr_hdFokBXDsv_ZD7BjC1kihiy3kg0wDvvp0j5CGXWT9F3jsfTjfVCoZdX8UC5Dzr1Z5GykBW1yQB"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-slate-400 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-900">Alex M.</p>
+<p class="text-xs text-slate-500">Bioinformatician</p>
+</div>
+<span class="px-2 py-1 rounded bg-teal-500/10 text-teal-700 text-[10px] font-bold border border-teal-500/20">Editor</span>
+</div>
+<div class="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer group">
+<div class="relative">
+<img alt="John D." class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of John D." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa9JxwW0wf1yNVpYXcLiXafTO4hXSKhWp25yagDifS4fxEuxNGByZUWPBa1vEoibkR9gArGKBdu7vuKjwlwBj5d9Ubzh1f5Wzfkm7N_QrR7Z_p7NXzSivbDl0ea2Z9NUqlxgwcfwukPAqNh30Qss462IceGcRBRGc6bZhsoONUiGIVYWLwTVX5x_JdRla_RiJfphYqiOzcwCw0ronBPC86JYD9uVMjrCWjpiDA7iVbNraALYuxcNQhR_vD_LJpbbZAPyrZ8R2kmpeW"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-900">John D.</p>
+<p class="text-xs text-slate-500">Data Scientist</p>
+</div>
+<span class="px-2 py-1 rounded bg-slate-500/10 text-slate-600 text-[10px] font-bold border border-slate-500/20">Viewer</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main>
+</div>
+</div>
+</body></html>

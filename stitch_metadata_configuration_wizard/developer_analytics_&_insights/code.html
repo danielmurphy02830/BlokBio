@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delta | Developer Analytics &amp; Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ecb6",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#10221d",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111816] dark:text-white antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex-shrink-0 border-r border-[#dbe6e3] dark:border-[#2a3a36] bg-white dark:bg-[#10221d] flex flex-col justify-between p-4">
+<div class="flex flex-col gap-8">
+<!-- Logo/Brand -->
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary size-10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[#111816]">biotech</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#111816] dark:text-white text-lg font-bold leading-none">Delta</h1>
+<p class="text-[#61897f] text-xs font-medium uppercase tracking-wider">Dev Console</p>
+</div>
+</div>
+<!-- Nav Links -->
+<nav class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-[#111816] dark:text-primary">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-semibold">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-[#1a2e29] text-[#61897f] transition-colors cursor-pointer">
+<span class="material-symbols-outlined">extension</span>
+<p class="text-sm font-medium">My Plugins</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-[#1a2e29] text-[#61897f] transition-colors cursor-pointer">
+<span class="material-symbols-outlined">account_tree</span>
+<p class="text-sm font-medium">Workflows</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-[#1a2e29] text-[#61897f] transition-colors cursor-pointer">
+<span class="material-symbols-outlined">payments</span>
+<p class="text-sm font-medium">Revenue</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-[#1a2e29] text-[#61897f] transition-colors cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</div>
+</nav>
+<!-- Plugin Search/Selector -->
+<div class="mt-4 px-2">
+<p class="text-[10px] font-bold text-[#61897f] uppercase tracking-widest mb-2 px-1">Active Projects</p>
+<div class="space-y-1">
+<div class="flex items-center gap-2 p-2 rounded-lg hover:bg-background-light dark:hover:bg-[#1a2e29] cursor-pointer group">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-medium text-[#111816] dark:text-gray-200">RNA-Seq-Turbo</span>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg hover:bg-background-light dark:hover:bg-[#1a2e29] cursor-pointer group">
+<div class="size-2 rounded-full bg-gray-300"></div>
+<span class="text-xs font-medium text-[#111816] dark:text-gray-200">DiffExp-Pro</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 rounded-lg h-11 bg-primary text-[#111816] text-sm font-bold tracking-tight hover:brightness-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>New Plugin</span>
+</button>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="max-w-[1200px] mx-auto p-8">
+<!-- Page Header -->
+<header class="flex flex-wrap justify-between items-end gap-6 mb-8">
+<div class="flex flex-col gap-1">
+<h2 class="text-[#111816] dark:text-white text-4xl font-black tracking-tight">Developer Analytics</h2>
+<p class="text-[#61897f] text-base">Real-time performance metrics for your bulk RNA-seq genomic analysis plugins.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 h-11 bg-white dark:bg-[#1a2e29] border border-[#dbe6e3] dark:border-[#2a3a36] text-[#111816] dark:text-white rounded-lg text-sm font-bold hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span>Last 30 Days</span>
+</button>
+<button class="flex items-center gap-2 px-6 h-11 bg-primary text-[#111816] rounded-lg text-sm font-bold hover:brightness-105 transition-all">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Export Report</span>
+</button>
+</div>
+</header>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-[#162a24] p-6 rounded-xl border border-[#dbe6e3] dark:border-[#2a3a36] shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<p class="text-[#61897f] text-sm font-bold uppercase tracking-wider">Total Installs</p>
+<span class="material-symbols-outlined text-primary">download_for_offline</span>
+</div>
+<p class="text-4xl font-black text-[#111816] dark:text-white mb-2">12,480</p>
+<div class="flex items-center gap-1.5 text-[#07882e] text-sm font-bold">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span>+12.4%</span>
+<span class="text-[#61897f] font-normal ml-1">vs last month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#162a24] p-6 rounded-xl border border-[#dbe6e3] dark:border-[#2a3a36] shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<p class="text-[#61897f] text-sm font-bold uppercase tracking-wider">Active Workspaces</p>
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<p class="text-4xl font-black text-[#111816] dark:text-white mb-2">1,842</p>
+<div class="flex items-center gap-1.5 text-[#07882e] text-sm font-bold">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span>+5.1%</span>
+<span class="text-[#61897f] font-normal ml-1">vs last month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#162a24] p-6 rounded-xl border border-[#dbe6e3] dark:border-[#2a3a36] shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<p class="text-[#61897f] text-sm font-bold uppercase tracking-wider">Compute API Calls</p>
+<span class="material-symbols-outlined text-primary">memory</span>
+</div>
+<p class="text-4xl font-black text-[#111816] dark:text-white mb-2">85.2k</p>
+<div class="flex items-center gap-1.5 text-[#07882e] text-sm font-bold">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span>+18.7%</span>
+<span class="text-[#61897f] font-normal ml-1">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="bg-white dark:bg-[#162a24] rounded-xl border border-[#dbe6e3] dark:border-[#2a3a36] shadow-sm p-8 mb-8">
+<div class="flex justify-between items-center mb-10">
+<div class="flex flex-col gap-1">
+<h3 class="text-xl font-bold text-[#111816] dark:text-white">Workflow Executions</h3>
+<p class="text-[#61897f] text-sm">Automated genomic transitions over the last 30 days.</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-2xl font-black text-[#111816] dark:text-white">4,205</p>
+<p class="text-[#07882e] text-xs font-bold uppercase tracking-widest">+24.5% TRENDING</p>
+</div>
+<div class="h-10 w-[1px] bg-[#dbe6e3] dark:bg-[#2a3a36]"></div>
+<button class="material-symbols-outlined text-[#61897f] hover:text-primary transition-colors">more_vert</button>
+</div>
+</div>
+<div class="relative h-[300px] w-full">
+<!-- Chart SVG -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="chartGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#13ecb6" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#13ecb6" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#f0f4f3" stroke-width="1" x1="0" x2="1000" y1="250" y2="250"></line>
+<line stroke="#f0f4f3" stroke-width="1" x1="0" x2="1000" y1="175" y2="175"></line>
+<line stroke="#f0f4f3" stroke-width="1" x1="0" x2="1000" y1="100" y2="100"></line>
+<line stroke="#f0f4f3" stroke-width="1" x1="0" x2="1000" y1="25" y2="25"></line>
+<!-- Area Fill -->
+<path d="M0,220 C100,180 150,250 250,150 C350,50 400,180 500,120 C600,60 650,20 750,80 C850,140 900,10 1000,40 L1000,300 L0,300 Z" fill="url(#chartGradient)"></path>
+<!-- Main Line -->
+<path d="M0,220 C100,180 150,250 250,150 C350,50 400,180 500,120 C600,60 650,20 750,80 C850,140 900,10 1000,40" fill="none" stroke="#13ecb6" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="flex justify-between mt-6 px-2">
+<p class="text-[#61897f] text-xs font-bold uppercase">Oct 01</p>
+<p class="text-[#61897f] text-xs font-bold uppercase">Oct 10</p>
+<p class="text-[#61897f] text-xs font-bold uppercase">Oct 20</p>
+<p class="text-[#61897f] text-xs font-bold uppercase">Oct 30</p>
+</div>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-white dark:bg-[#162a24] rounded-xl border border-[#dbe6e3] dark:border-[#2a3a36] shadow-sm overflow-hidden">
+<div class="px-8 py-6 border-b border-[#dbe6e3] dark:border-[#2a3a36] flex justify-between items-center">
+<h3 class="text-xl font-bold text-[#111816] dark:text-white">Compute Credit Revenue</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded bg-[#f0f4f3] dark:bg-[#1a2e29] text-[#111816] dark:text-white text-xs font-bold hover:bg-primary hover:text-white transition-all">Today</button>
+<button class="px-3 py-1.5 rounded bg-primary text-[#111816] text-xs font-bold">This Week</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#f8faf9] dark:bg-[#1a2e29]">
+<th class="px-8 py-4 text-[#61897f] text-xs font-bold uppercase tracking-wider">Plugin Name</th>
+<th class="px-8 py-4 text-[#61897f] text-xs font-bold uppercase tracking-wider">Version</th>
+<th class="px-8 py-4 text-[#61897f] text-xs font-bold uppercase tracking-wider text-right">Executions</th>
+<th class="px-8 py-4 text-[#61897f] text-xs font-bold uppercase tracking-wider text-right">Revenue (USD)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#dbe6e3] dark:divide-[#2a3a36]">
+<tr class="hover:bg-gray-50 dark:hover:bg-[#1e342e] transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">science</span>
+</div>
+<span class="text-[#111816] dark:text-white font-bold">RNA-Seq Turbo Engine</span>
+</div>
+</td>
+<td class="px-8 py-5 text-sm font-medium text-[#61897f]">v2.4.1</td>
+<td class="px-8 py-5 text-sm font-bold text-right text-[#111816] dark:text-white">1,420</td>
+<td class="px-8 py-5 text-sm font-black text-right text-primary">$2,840.00</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-[#1e342e] transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
+</div>
+<span class="text-[#111816] dark:text-white font-bold">Differential Express Pro</span>
+</div>
+</td>
+<td class="px-8 py-5 text-sm font-medium text-[#61897f]">v1.9.0</td>
+<td class="px-8 py-5 text-sm font-bold text-right text-[#111816] dark:text-white">845</td>
+<td class="px-8 py-5 text-sm font-black text-right text-primary">$1,690.50</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-[#1e342e] transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">insights</span>
+</div>
+<span class="text-[#111816] dark:text-white font-bold">Pathway-AI Mapper</span>
+</div>
+</td>
+<td class="px-8 py-5 text-sm font-medium text-[#61897f]">v3.0.0</td>
+<td class="px-8 py-5 text-sm font-bold text-right text-[#111816] dark:text-white">612</td>
+<td class="px-8 py-5 text-sm font-black text-right text-primary">$918.00</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-[#1e342e] transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">cloud_sync</span>
+</div>
+<span class="text-[#111816] dark:text-white font-bold">Bulk Splicing Analyzer</span>
+</div>
+</td>
+<td class="px-8 py-5 text-sm font-medium text-[#61897f]">v1.2.1</td>
+<td class="px-8 py-5 text-sm font-bold text-right text-[#111816] dark:text-white">320</td>
+<td class="px-8 py-5 text-sm font-black text-right text-primary">$640.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-4 bg-[#f8faf9] dark:bg-[#1a2e29] border-t border-[#dbe6e3] dark:border-[#2a3a36] flex justify-end">
+<div class="flex items-center gap-4">
+<p class="text-sm font-bold text-[#111816] dark:text-white uppercase tracking-wider">Total Revenue</p>
+<p class="text-2xl font-black text-[#111816] dark:text-white">$6,088.50</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
