@@ -252,16 +252,18 @@
                   <div
                     class="absolute left-10 top-10 w-64 h-64 rounded-full bg-primary/20 border-2 border-primary mix-blend-multiply flex items-center justify-start pl-12 group cursor-pointer hover:bg-primary/30 transition-all z-10 shadow-sm">
                     <span
-                      class="text-slate-700 font-bold text-xl drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 left-10">345</span>
+                      class="text-slate-700 font-bold text-xl drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 left-10">{{
+                      count_a }}</span>
                   </div>
                   <div
                     class="absolute right-10 top-10 w-64 h-64 rounded-full bg-accent-secondary/20 border-2 border-accent-secondary mix-blend-multiply flex items-center justify-end pr-12 group cursor-pointer hover:bg-accent-secondary/30 transition-all z-10 shadow-sm">
                     <span
-                      class="text-slate-700 font-bold text-xl drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 right-10">1,203</span>
+                      class="text-slate-700 font-bold text-xl drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 right-10">{{
+                      count_b }}</span>
                   </div>
                   <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
                     <div class="text-center">
-                      <span class="block text-3xl font-black text-slate-800 drop-shadow-sm">142</span>
+                      <span class="block text-3xl font-black text-slate-800 drop-shadow-sm">{{ count_overlap }}</span>
                       <span class="text-xs font-bold text-slate-600 uppercase tracking-wide">Common Genes</span>
                     </div>
                   </div>
@@ -377,56 +379,7 @@
                   </tr>
                 </thead>
                 <tbody class="text-sm divide-y divide-slate-100">
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">TP53</td>
-                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+2.45</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">1.2e-8</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">BRCA1</td>
-                    <td class="py-3 px-4 text-right font-mono text-red-500 font-medium">-1.82</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">4.5e-6</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">EGFR</td>
-                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+3.10</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">2.1e-12</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">MYC</td>
-                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+1.55</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">0.001</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">VEGFA</td>
-                    <td class="py-3 px-4 text-right font-mono text-red-500 font-medium">-2.01</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">1.8e-4</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">KRAS</td>
-                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+4.12</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">9.2e-20</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">AKT1</td>
-                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+1.67</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">0.004</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">PTEN</td>
-                    <td class="py-3 px-4 text-right font-mono text-red-500 font-medium">-1.45</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">0.032</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">CDK4</td>
-                    <td class="py-3 px-4 text-right font-mono text-emerald-600 font-medium">+2.88</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">3.3e-9</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 group transition-colors cursor-pointer">
-                    <td class="py-3 px-4 font-semibold text-primary">RB1</td>
-                    <td class="py-3 px-4 text-right font-mono text-red-500 font-medium">-3.01</td>
-                    <td class="py-3 px-4 text-right font-mono text-slate-500">1.1e-15</td>
-                  </tr>
+                  {{ contrast_table }}
                 </tbody>
               </table>
             </div>

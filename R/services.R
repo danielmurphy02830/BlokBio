@@ -17,6 +17,7 @@ StorageService <- list(
       ProjectName = c("Mouse_Liver_Study_001", "Human_CellLine_Treat"),
       ID = c("DLT-8921", "DLT-8924"),
       Status = c("QC Passed", "Processing"),
+      Owner = c("Dr. S. Chen", "J. Doe"),
       stringsAsFactors = FALSE
     ))
   }
