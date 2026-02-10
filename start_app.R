@@ -10,7 +10,7 @@ ensure_package <- function(pkg) {
 }
 
 # 2. Check required dependencies
-requirements <- c("shiny", "htmltools", "jsonlite")
+requirements <- c("shiny", "htmltools", "jsonlite", "R6", "RSQLite", "DBI")
 lapply(requirements, ensure_package)
 
 # 3. Launch App

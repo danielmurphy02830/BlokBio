@@ -10,12 +10,14 @@ if %errorlevel% equ 0 (
     goto :EOF
 )
 
-:: 2. Search in Standard Directories (checking latest versions first)
+:: 2. Search in Standard Directories (High Priority: x64)
 echo R not found in PATH. Searching standard directories...
 
 set "R_PATH="
 for /d %%D in ("C:\Program Files\R\R-*") do (
-    if exist "%%D\bin\Rscript.exe" (
+    if exist "%%D\bin\x64\Rscript.exe" (
+        set "R_PATH=%%D\bin\x64\Rscript.exe"
+    ) else if exist "%%D\bin\Rscript.exe" (
         set "R_PATH=%%D\bin\Rscript.exe"
     )
 )

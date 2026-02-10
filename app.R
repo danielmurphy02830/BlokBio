@@ -1,7 +1,7 @@
 source("global.R")
 
 # Source Page Modules
-list.files("R/pages", full.names = TRUE) %>% sapply(source)
+sapply(list.files("R/pages", full.names = TRUE), source)
 
 ui <- tagList(
   uiOutput("page_view")
@@ -52,33 +52,36 @@ server <- function(input, output, session) {
       "templates/home.html" # Default
     )
     
-    # Render with template variables using Modules
+    # Render using Modules
     if (current == "ingestion") {
-       render_ingestion_page(template_file)
+       ingestionUI("ingestion", template_file)
     } else if (current == "qc") {
-       render_qc_page(template_file)
+       qcUI("qc", template_file)
     } else if (current == "dgea") {
-       render_dgea_page(template_file)
+       dgeaUI("dgea", template_file)
     } else if (current == "pathway") {
-       render_pathway_page(template_file)
+       pathwayUI("pathway", template_file)
     } else if (current == "workspaces") {
-       render_workspaces_page(template_file)
+       workspacesUI("workspaces", template_file)
     } else if (current == "contrast") {
-       render_contrast_page(template_file)
+       contrastUI("contrast", template_file)
     } else {
        htmlTemplate(template_file) # Default/Static pages
     }
   })
   
   # -- Server Logic Setup --
-  # Initialize server-side outputs for modules
-  setup_qc_server(output)
-  setup_dgea_server(output)
-  setup_pathway_server(output)
+  # Initialize Module Servers
+  ingestionServer("ingestion")
+  qcServer("qc")
+  dgeaServer("dgea")
+  pathwayServer("pathway")
   
-  # -- Navigation Handlers --
-  # We will need to use shinyjs or 'onclick' bindings in the HTML to update 'page'
-  # For now, we can manually test by changing the default or using query params.
+  # For pages that need the template in the server (dynamic table injection)
+  # We assume standard locations.
+  workspacesServer("workspaces", "templates/workspaces.html")
+  contrastServer("contrast", "templates/contrast.html")
+
 }
 
 shinyApp(ui, server)
