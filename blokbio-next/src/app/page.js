@@ -1,15 +1,27 @@
+"use client";
+import { useState, useEffect } from "react";
 import Sidebar from "@/components/Sidebar";
 import Link from "next/link";
-import { projects } from "@/lib/mock-data";
 
 const statusStyles = {
   "QC Passed": { bg: "bg-emerald-50", text: "text-emerald-800", border: "border-emerald-200", dot: "bg-emerald-500", icon: null },
   "Processing": { bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200", dot: null, icon: "progress_activity" },
   "DGEA Complete": { bg: "bg-purple-50", text: "text-purple-800", border: "border-purple-200", dot: null, icon: "check_circle" },
   "Upload Pending": { bg: "bg-amber-50", text: "text-amber-800", border: "border-amber-200", dot: null, icon: "cloud_upload" },
+  "Pending": { bg: "bg-gray-50", text: "text-gray-600", border: "border-gray-200", dot: null, icon: "schedule" },
 };
 
 export default function HomePage() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/projects")
+      .then((r) => r.json())
+      .then((data) => { setProjects(data); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, []);
+
   return (
     <div className="flex h-screen w-full overflow-hidden">
       <Sidebar />
@@ -128,7 +140,12 @@ export default function HomePage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#e5e7eb]" style={{ fontFamily: "var(--font-body)" }}>
-                  {projects.map((p) => {
+                  {loading ? (
+                    <tr><td colSpan={6} className="py-12 text-center text-[#637588]">
+                      <span className="material-symbols-outlined animate-spin">progress_activity</span>
+                      <p className="mt-2 text-sm">Loading projects...</p>
+                    </td></tr>
+                  ) : projects.map((p) => {
                     const s = statusStyles[p.status] || statusStyles["QC Passed"];
                     return (
                       <tr key={p.id} className="group hover:bg-gray-50 transition-colors">
