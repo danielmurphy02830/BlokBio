@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #0d9488;
+  --color-primary-hover: #0f766e;
+  --color-primary-light: #f0fdfa;
+  --color-primary-dark: #00796b;
+
+  --color-background-light: #ffffff;
+  --color-background-dark: #101922;
+  --color-background-subtle: #f8fafc;
+
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #1c232d;
+  --color-surface-border: #e5e7eb;
+
+  --color-border-light: #e2e8f0;
+  --color-border-dark: #2d3642;
+
+  --color-text-main: #111827;
+  --color-text-secondary: #6b7280;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-display);
+  background: var(--color-background-light);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* AI gradient text effect */
+.ai-gradient-text {
+  background: linear-gradient(135deg, #009688 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Material Symbols config */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.icon-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
