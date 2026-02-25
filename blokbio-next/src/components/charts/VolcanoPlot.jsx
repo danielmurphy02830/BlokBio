@@ -2,9 +2,8 @@
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ReferenceLine } from "recharts";
 import { generateVolcanoData } from "@/lib/mock-data";
 
-const data = generateVolcanoData();
-
-export default function VolcanoPlot() {
+export default function VolcanoPlot({ data: externalData }) {
+    const data = externalData || generateVolcanoData();
     return (
         <ResponsiveContainer width="100%" height="100%">
             <ScatterChart margin={{ top: 10, right: 20, bottom: 20, left: 10 }}>

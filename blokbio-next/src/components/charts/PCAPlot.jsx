@@ -2,10 +2,9 @@
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
 import { generatePCAData } from "@/lib/mock-data";
 
-const data = generatePCAData();
-const groups = [...new Set(data.map(d => d.group))];
-
-export default function PCAPlot() {
+export default function PCAPlot({ data: externalData }) {
+    const data = externalData || generatePCAData();
+    const groups = [...new Set(data.map(d => d.group))];
     return (
         <ResponsiveContainer width="100%" height="100%">
             <ScatterChart margin={{ top: 10, right: 20, bottom: 20, left: 10 }}>
@@ -25,7 +24,7 @@ export default function PCAPlot() {
                 }} />
                 <Legend content={() => (
                     <div className="flex justify-center gap-4 mt-2">
-                        {groups.map((g, i) => (
+                        {groups.map((g) => (
                             <div key={g} className="flex items-center gap-1.5 text-xs text-slate-600">
                                 <div className="w-3 h-3 rounded-full" style={{ background: data.find(d => d.group === g)?.color }}></div>
                                 {g}

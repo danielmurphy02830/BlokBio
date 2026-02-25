@@ -14,6 +14,7 @@ const statusStyles = {
 export default function HomePage() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("/api/projects")
@@ -21,6 +22,12 @@ export default function HomePage() {
       .then((data) => { setProjects(data); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);
+
+  const filtered = projects.filter((p) => {
+    if (!search) return true;
+    const q = search.toLowerCase();
+    return p.name?.toLowerCase().includes(q) || p.id?.toLowerCase().includes(q) || p.organism?.toLowerCase().includes(q);
+  });
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
@@ -124,7 +131,7 @@ export default function HomePage() {
                   <span className="material-symbols-outlined text-[#637588]">search</span>
                 </div>
                 <input className="block w-full pl-10 pr-3 py-2.5 border border-[#e5e7eb] rounded-lg leading-5 bg-white text-[#111418] placeholder-[#9ca3af] focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition-colors"
-                  placeholder="Search by name, ID, or organism..." type="text" />
+                  placeholder="Search by name, ID, or organism..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
               </div>
             </div>
             <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
@@ -145,7 +152,12 @@ export default function HomePage() {
                       <span className="material-symbols-outlined animate-spin">progress_activity</span>
                       <p className="mt-2 text-sm">Loading projects...</p>
                     </td></tr>
-                  ) : projects.map((p) => {
+                  ) : filtered.length === 0 ? (
+                    <tr><td colSpan={6} className="py-12 text-center text-[#637588]">
+                      <span className="material-symbols-outlined text-3xl mb-2">search_off</span>
+                      <p className="text-sm">No projects match &quot;{search}&quot;</p>
+                    </td></tr>
+                  ) : filtered.map((p) => {
                     const s = statusStyles[p.status] || statusStyles["QC Passed"];
                     return (
                       <tr key={p.id} className="group hover:bg-gray-50 transition-colors">
@@ -166,7 +178,7 @@ export default function HomePage() {
                           </span>
                         </td>
                         <td className="py-4 px-6 text-right">
-                          <button className="text-primary hover:text-teal-700 text-sm font-medium">View</button>
+                          <Link href={`/projects/${p.id}`} className="text-primary hover:text-teal-700 text-sm font-medium">View</Link>
                         </td>
                       </tr>
                     );

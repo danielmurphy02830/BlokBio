@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import Header from "@/components/Header";
 import Link from "next/link";
+import CSVPreview from "@/components/CSVPreview";
 
 export default function IngestionPage() {
     const [countsFile, setCountsFile] = useState(null);
@@ -101,6 +102,7 @@ export default function IngestionPage() {
                                             <input ref={countsRef} type="file" accept=".csv,.tsv" className="hidden" onChange={(e) => setCountsFile(e.target.files[0])} />
                                         </label>
                                     </div>
+                                    {countsFile && <CSVPreview file={countsFile} />}
                                 </div>
                             </div>
                             {/* Metadata Card */}
@@ -130,6 +132,7 @@ export default function IngestionPage() {
                                             <input ref={metadataRef} type="file" accept=".csv,.tsv" className="hidden" onChange={(e) => setMetadataFile(e.target.files[0])} />
                                         </label>
                                     </div>
+                                    {metadataFile && <CSVPreview file={metadataFile} />}
                                 </div>
                             </div>
                         </div>

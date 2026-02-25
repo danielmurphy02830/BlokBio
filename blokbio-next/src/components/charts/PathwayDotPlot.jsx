@@ -1,8 +1,10 @@
 "use client";
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
-import { pathwayData } from "@/lib/mock-data";
+import { pathwayData as defaultData } from "@/lib/mock-data";
 
-export default function PathwayDotPlot() {
+export default function PathwayDotPlot({ data: externalData }) {
+    const pathwayData = externalData || defaultData;
+
     const colors = pathwayData.map(d => {
         const norm = d.pAdj / 0.05;
         const r = Math.round(239 * norm + 59 * (1 - norm));

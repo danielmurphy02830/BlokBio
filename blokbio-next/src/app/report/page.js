@@ -1,9 +1,14 @@
+"use client";
+import { useRef } from "react";
 import StaticPageLayout from "@/components/StaticPageLayout";
+import ExportPDF from "@/components/ExportPDF";
 
 export default function ReportPage() {
+    const reportRef = useRef(null);
+
     return (
         <StaticPageLayout title="Analysis Report" subtitle="Auto-generated summary report for your latest RNA-seq analysis." icon="summarize" breadcrumb={[{ label: "Report" }]}>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6" ref={reportRef}>
                 {/* Report Header */}
                 <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
                     <div className="flex justify-between items-start mb-4">
@@ -11,10 +16,7 @@ export default function ReportPage() {
                             <h3 className="text-slate-900 font-bold text-lg">Mouse_Liver_Study_001</h3>
                             <p className="text-slate-500 text-sm mt-1">Generated: Feb 25, 2026 • Project ID: DLT-8921</p>
                         </div>
-                        <button className="h-10 px-4 rounded-lg bg-primary text-white text-sm font-bold hover:bg-teal-700 transition-colors flex items-center gap-2">
-                            <span className="material-symbols-outlined text-[18px]">download</span>
-                            Download PDF
-                        </button>
+                        <ExportPDF targetRef={reportRef} filename="blokbio-analysis-report" />
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-gray-200">
                         {[
